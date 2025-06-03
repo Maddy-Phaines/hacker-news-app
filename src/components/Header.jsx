@@ -1,4 +1,5 @@
 import { Search } from "lucide-react";
+/* Sticky top bar with app name, search, and category filter*/
 
 function Header() {
   return (
