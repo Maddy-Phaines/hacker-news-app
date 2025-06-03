@@ -1,37 +1,37 @@
-import { Search } from "lucide-react"; // If you're using lucide for icons, you can replace this with your icon lib
+import { Search } from "lucide-react";
 
 function Header() {
   return (
-    <header className="sticky top-0 bg-white shadow-sm z-10">
-      {/* Outer layout container */}
-      <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
-        {/* App Title */}
-        <h1 className="text-xl font-semibold text-gray-900">
-          Hacker News Reader
-        </h1>
+    <header className="sticky top-0 bg-white shadow-sm z-10 rounded-b-2xl">
+      <div className="max-w-4xl mx-auto px-4">
+        {/* Top Row */}
+        <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between py-3 flex items-center justify-between">
+          <h1 className="text-xl font-bold text-purple-900">
+            Hacker News Reader
+          </h1>
 
-        {/* Search Button */}
-        <button className="flex items-center gap-1 bg-gray-100 text-gray-700 px-3 py-2 rounded-lg shadow-sm text-sm hover:bg-gray-200 transition">
-          <Search className="w-4 h-4" />
-          Search
-        </button>
+          <button className="flex items-center gap-2 bg-gray-100 text-gray-700 px-4 py-2 rounded-lg shadow text-sm hover:bg-gray-200 transition">
+            <Search className="w-4 h-4" />
+            Search
+          </button>
+        </div>
+
+        {/* Category Nav */}
+        <nav className="flex divide-x divide-gray-300 gap-4 overflow-x-auto py-2 border-t border-b border-gray-300 bg-white">
+          <button className="px-2 text-blue-600 font-semibold border-blue-600 pb-2">
+            Top
+          </button>
+          <button className="text-gray-600 hover:text-blue-600 cursor-pointer transition px-2">
+            Ask HN
+          </button>
+          <button className="text-gray-600 hover:text-blue-600 cursor-pointer transition px-2">
+            Show HN
+          </button>
+          <button className="text-gray-600 hover:text-blue-600 cursor-pointer transition px-2">
+            Polls
+          </button>
+        </nav>
       </div>
-
-      {/* Category Filter */}
-      <nav className="flex gap-4 overflow-x-auto px-4 py-2 border-t border-b border-gray-200 bg-white">
-        <button className="text-blue-600 font-semibold border-b-2 border-blue-600 pb-2">
-          Top
-        </button>
-        <button className="text-gray-600 hover:text-blue-600 transition">
-          Ask HN
-        </button>
-        <button className="text-gray-600 hover:text-blue-600 transition">
-          Show HN
-        </button>
-        <button className="text-gray-600 hover:text-blue-600 transition">
-          Polls
-        </button>
-      </nav>
     </header>
   );
 }
