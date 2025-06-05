@@ -13,7 +13,7 @@ const PostItem = ({
   created_at,
 }) => {
   return (
-    <div className="bg-white rounded-lg shadow-sm p-4 mb-3 hover:bg-gray-50 transition">
+    <div className="bg-white rounded-lg shadow-sm p-5 mb-6 hover:bg-gray-50 transition">
       {/* Post Title */}
       <div className="flex items-center">
         {url && (

@@ -22,11 +22,11 @@ function HomePage() {
       {status === "loading" && <Loader />}
       {status === "failed" && <ErrorMessage message={error} />}
       {status === "succeeded" && (
-        <div className="flex flex-col md:flex-row gap-6">
+        <div className="flex flex-col md:flex-row gap-8">
           <div className="flex-1">
             <PostList posts={posts} />
           </div>
-          <aside className="w-full md:w-80">
+          <aside className="flex-[1] sticky top-4 border-l border-[#F2F2F2] pl-4 h-fit self-start">
             <Sidebar />
           </aside>
         </div>
