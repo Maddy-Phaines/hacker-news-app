@@ -38,4 +38,11 @@ const postsSlice = createSlice({
   },
 });
 
+// Select all posts data from Redux state
+export const selectPosts = (state) => state.posts.items;
+// Select loading status ("idle" | "loading" | "succeeded" | "failed") for async fetch
+export const selectPostsStatus = (state) => state.posts.status;
+// Select error message  from async fetch failure
+export const selectPostsError = (state) => state.posts.error;
+
 export default postsSlice.reducer;

@@ -1,12 +1,8 @@
 /* Redux data flow -> HomePage dispatches the fetchPosts action*/
-import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchPosts,
-  selectPosts,
-  selectPostsStatus,
-  selectPostsError,
-} from "../features/posts/postsSlice";
+import { useDispatch } from "react-redux";
+import { fetchPosts } from "../features/posts/postsSlice";
 import { useEffect } from "react";
+import { usePosts } from "../hooks/usePosts";
 import Loader from "../components/Loader";
 import ErrorMessage from "../components/ErrorMessage";
 import PostList from "../components/PostList/PostList";
@@ -15,13 +11,7 @@ import Sidebar from "../components/SideBar";
 function HomePage() {
   // Get Redux dispatch function for triggering actions
   const dispatch = useDispatch();
-
-  // Select posts data array from the store
-  const posts = useSelector(selectPosts);
-  // Select current loading status ("idle" | "loading" | "succeeded" | "failed") from the store
-  const status = useSelector(selectPostsStatus);
-  // Select error message from the store
-  const error = useSelector(selectPostsError);
+  const { posts, status, error } = usePosts();
 
   useEffect(() => {
     dispatch(fetchPosts());
@@ -29,7 +19,6 @@ function HomePage() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-6">
-      <h1>Home Page</h1>
       {status === "loading" && <Loader />}
       {status === "failed" && <ErrorMessage message={error} />}
       {status === "succeeded" && (

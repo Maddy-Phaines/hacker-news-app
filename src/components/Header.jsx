@@ -7,7 +7,7 @@ function Header() {
       <div className="max-w-4xl mx-auto px-4">
         {/* Top Row */}
         <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between py-3 flex items-center justify-between">
-          <h1 className="text-xl font-bold text-purple-900">
+          <h1 className="text-2xl font-bold text-purple-900">
             Hacker News Reader
           </h1>
 

@@ -1,16 +1,28 @@
 import { MessageCircle, ArrowUp } from "lucide-react";
-import formatDistanceToNow from "date-fns/formatDistanceToNow";
-
+import { formatDateSafe } from "../../utils/formatDate";
 /* Displays single post (title, metadata, link)
 Reusable */
 /* presentational only */
-const PostItem = ({ post }) => {
-  const { objectId, title, url, author, points, num_comments, created_at } =
-    post;
+const PostItem = ({
+  objectId,
+  title,
+  url,
+  author,
+  points,
+  num_comments,
+  created_at,
+}) => {
   return (
     <div className="bg-white rounded-lg shadow-sm p-4 mb-3 hover:bg-gray-50 transition">
       {/* Post Title */}
-      <div>
+      <div className="flex items-center">
+        {url && (
+          <img
+            src={`https://www.google.com/s2/favicons?sz=64&domain_url=${url}`}
+            alt="Favicon"
+            className="w-5 h-5 mr-2"
+          />
+        )}
         <h2 className="text-lg font-medium text-gray-900">
           <a
             href={url}
@@ -31,9 +43,7 @@ const PostItem = ({ post }) => {
 
         <div>by {author}</div>
 
-        <div>
-          {formatDistanceToNow(new Date(created_at), { addSuffix: true })}
-        </div>
+        <div>{formatDateSafe(created_at)}</div>
 
         <div className="flex items-center gap-1">
           <MessageCircle className="w-4 h-4" />

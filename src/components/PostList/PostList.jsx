@@ -4,9 +4,17 @@ import PostItem from "./PostItem";
 
 const PostList = ({ posts }) => {
   return (
-    <div>
+    <div className="">
       {posts.map((post) => (
-        <PostItem key={post.objectID} post={post} />
+        <PostItem
+          key={post.objectID}
+          title={post.title}
+          author={post.author}
+          url={post.url}
+          points={post.points}
+          num_comments={post.num_comments}
+          created_at={post.created_at}
+        />
       ))}
     </div>
   );
