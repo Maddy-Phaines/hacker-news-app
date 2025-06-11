@@ -5,12 +5,23 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export const fetchTrendingPosts = createAsyncThunk(
   "posts/trendingPosts",
   async () => {
-    const response = await fetch(
-      "https://hn.algolia.com/api/v1/search?tags=story&numericFilters=points>100"
-    );
+    // 1) Calculate the cutoff timestamp (seconds since the epoch)
+    const oneDayAgo = Math.floor(Date.now() / 1000) - 24 * 60 * 60;
+
+    // filter string
+    const filters = `points>100,created_at_i>${oneDayAgo}`;
+
+    // constructs the full URL, encoding the filters portion
+    const url =
+      `https://hn.algolia.com/api/v1/search_by_date?` +
+      `tags=story&` +
+      `numericFilters=${encodeURIComponent(filters)}&` +
+      `hitsPerPage=5`;
+
+    const response = await fetch(url);
 
     if (!response.ok) {
-      throw new Error("Network response was not ok");
+      throw new Error("Failed to fetch trending posts");
     }
 
     const data = await response.json();
