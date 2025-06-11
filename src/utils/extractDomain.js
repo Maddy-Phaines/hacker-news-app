@@ -1,8 +1,12 @@
-export function extractDomain(url) {
+const DEFAULT_DOMAIN = "www.ycombinator.news.com";
+
+export const extractDomain = (urlString) => {
+  if (!urlString) return DEFAULT_DOMAIN;
   try {
-    const domain = new URL(url).hostname.replace("www.", "");
-    return domain;
+    const urlObj = new URL(urlString);
+    const hostName = urlObj.hostname.replace("www.", "");
+    return hostName;
   } catch {
-    return "news.ycombinator.com";
+    return DEFAULT_DOMAIN;
   }
-}
+};
