@@ -18,7 +18,7 @@ function HomePage() {
   }, [dispatch]); // Runs once on first render to display top stories when HomePage loads
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-6">
+    <div className="mx-auto px-4 py-6">
       {status === "loading" && <Loader />}
       {status === "failed" && <ErrorMessage message={error} />}
       {status === "succeeded" && (
@@ -26,7 +26,10 @@ function HomePage() {
           <div className="flex-1">
             <PostList posts={posts} />
           </div>
-          <aside className="flex-[1] sticky top-4 border-l border-[#F2F2F2] pl-4 h-fit self-start">
+          <aside
+            className="lgminus:block flex-none w-[368px] border-l border-[#F2F2F2] 
+          bg-white pt-10 pl-[clamp(24px,24px+100vw-1080px,40px)] pr-6 min-h-screen sticky top-[57px]"
+          >
             <Sidebar />
           </aside>
         </div>

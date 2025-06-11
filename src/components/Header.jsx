@@ -1,37 +1,53 @@
 import { Search } from "lucide-react";
+import SearchBar from "./SearchBar";
+import { NavLink } from "react-router-dom";
 /* Sticky top bar with app name, search, and category filter*/
 
 function Header() {
   return (
-    <header className="sticky top-0 bg-white shadow-sm z-10 rounded-b-2xl">
-      <div className="max-w-4xl mx-auto px-4">
-        {/* Top Row */}
-        <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between py-3 flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-purple-900">
-            Hacker News Reader
-          </h1>
+    <header className="w-full bg-white">
+      {/* ─────────────── Row 1: brand + search ─────────────── */}
+      <div className="w-full py-4">
+        <div className="max-w-6xl mx-auto px-4 flex items-center space-x-6">
+          {/* Brand on the far left */}
+          <h1 className="text-2xl font-bold">Hacker News Reader</h1>
 
-          <button className="flex items-center gap-2 bg-gray-100 text-gray-700 px-4 py-2 rounded-lg shadow text-sm hover:bg-gray-200 transition">
-            <Search className="w-4 h-4" />
-            Search
-          </button>
+          {/* SearchBar immediately to its right */}
+          <div className="flex-1 max-w-md">
+            <SearchBar />
+          </div>
+
+          {/* if you have other header icons/buttons (profile, etc.), add here */}
+          {/* <ProfileMenu /> */}
         </div>
+      </div>
 
-        {/* Category Nav */}
-        <nav className="flex divide-x divide-gray-300 gap-4 overflow-x-auto py-2 border-t border-b border-gray-300 bg-white">
-          <button className="px-2 text-blue-600 font-semibold border-blue-600 pb-2">
-            Top
-          </button>
-          <button className="text-gray-600 hover:text-blue-600 cursor-pointer transition px-2">
-            Ask HN
-          </button>
-          <button className="text-gray-600 hover:text-blue-600 cursor-pointer transition px-2">
-            Show HN
-          </button>
-          <button className="text-gray-600 hover:text-blue-600 cursor-pointer transition px-2">
-            Polls
-          </button>
-        </nav>
+      {/* Category Nav */}
+      {/* ─────────────── Row 2: HN nav links ─────────────── */}
+      <div className="w-full border-t border-b border-gray-200">
+        <div className="max-w-6xl mx-auto px-4">
+          <nav className="flex space-x-8 text-sm font-medium text-gray-600">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-black border-b-2 border-blue-600 pb-2"
+                  : "hover:text-black"
+              }
+            >
+              Top
+            </NavLink>
+            <NavLink to="/ask" className="hover:text-black">
+              Ask HN
+            </NavLink>
+            <NavLink to="/show" className="hover:text-black">
+              Show HN
+            </NavLink>
+            <NavLink to="/polls" className="hover:text-black">
+              Polls
+            </NavLink>
+          </nav>
+        </div>
       </div>
     </header>
   );
