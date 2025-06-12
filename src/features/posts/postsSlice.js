@@ -14,14 +14,21 @@ export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
   return data.hits;
 });
 
+export const initialPostState = {
+  items: [],
+  status: "idle",
+  error: null,
+};
+
 const postsSlice = createSlice({
   name: "posts",
-  initialState: {
-    items: [],
-    status: "idle",
-    error: null,
+  initialState: initialPostState,
+  reducers: {
+    // reset state
+    resetPosts() {
+      return initialPostState;
+    },
   },
-  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchPosts.pending, (state) => {
@@ -45,4 +52,5 @@ export const selectPostsStatus = (state) => state.posts.status;
 // Select error message  from async fetch failure
 export const selectPostsError = (state) => state.posts.error;
 
+export const { resetPosts } = postsSlice.actions;
 export default postsSlice.reducer;
