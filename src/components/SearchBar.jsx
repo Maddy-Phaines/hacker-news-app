@@ -2,13 +2,28 @@
 /* Optional separation */
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import {
+  setQuery as setSearchQuery,
+  fetchSearch,
+} from "../features/search/searchSlice";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setQuery(e.target.value);
+  };
+
+  const runSearch = () => {
+    const trimmed = query.trim();
+    if (!trimmed) return;
+
+    dispatch(setSearchQuery(trimmed)); // store the search term in Redux
+    dispatch(fetchSearch({ append: false })); // thunk read state.search.query
+    navigate("/search");
   };
 
   const handleKeyDown = (e) => {
@@ -23,6 +38,7 @@ const SearchBar = () => {
         type="text"
         value={query}
         onChange={handleChange}
+        onKeyDown={handleKeyDown}
         placeholder="Search stories, comments..."
         className="w-full pl-10 pr-4 py-2
           border border-gray-300
@@ -31,6 +47,8 @@ const SearchBar = () => {
       />
 
       <button
+        onClick={runSearch}
+        aria-label="Search"
         className="absolute left-3 top-1/2 transform -translate-y-1/2
           text-gray-500 hover:text-gray-700"
       >
