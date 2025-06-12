@@ -23,27 +23,31 @@ const PostItem = ({
           <div className="mt-[32px]">
             <div className="wrap-break-word">
               {/* Post Title */}
-              <div className="flex items-center">
+              <div className="flex flex-col items-start">
                 {url && (
-                  <img
-                    src={`https://www.google.com/s2/favicons?sz=64&domain_url=${url}`}
-                    alt="Favicon"
-                    className="w-5 h-5 mr-2"
-                  />
+                  <div className="pt-5">
+                    <img
+                      src={`https://www.google.com/s2/favicons?sz=64&domain_url=${url}`}
+                      alt="Favicon"
+                      className="w-10 h-10 mr-2"
+                    />
+                  </div>
                 )}
-                <h2 className="text-xl capitalize min-[728px]:text-2xl tracking-[0.016em] leading-[30px] font-bold text-gray-900">
-                  <a
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                  >
-                    {title}
-                  </a>
-                </h2>
+                <div className="pt-5">
+                  <h2 className="text-xl capitalize min-[728px]:text-2xl tracking-[0.016em] leading-[30px] font-bold text-gray-900">
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:underline"
+                    >
+                      {title}
+                    </a>
+                  </h2>
+                </div>
               </div>
               {/* Post Metadata */}
-              <div className="text-sm text-gray-500 flex flex-wrap gap-4 pt-[10px]">
+              <div className="text-sm text-gray-500 flex flex-wrap gap-4 pb-[20px]">
                 <div className="flex h-[48px] justify-between w-full">
                   <div className="flex gap-1">
                     <div className="flex items-center gap-2">
