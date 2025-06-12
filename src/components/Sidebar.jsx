@@ -1,5 +1,6 @@
 // Shows trending stories
 import { useDispatch } from "react-redux";
+
 import {
   fetchTrendingPosts, // thunk to trigger API request
 } from "../features/trendingPosts/trendingPostsSlice";
@@ -19,7 +20,7 @@ const Sidebar = () => {
   }, [dispatch]);
 
   return (
-    <aside className="bg-gray-100 p-4 rounded-md">
+    <aside className="p-4 rounded-md">
       <h2 className="text-lg font-semibold mb-4">Trending</h2>
       {status === "loading" && <Loader />}
       {status === "failed" && <ErrorMessage message={error} />}

@@ -29,15 +29,21 @@ export const fetchTrendingPosts = createAsyncThunk(
   }
 );
 
+export const initialTrendingState = {
+  items: [], // holds trending posts array following successful fetch
+  status: "idle", // "idle" | "loading" | "succeeded" | "failed"
+  error: null, // holds error message if fetch fails
+};
+
 // slice here
 const trendingPostsSlice = createSlice({
   name: "trendingPosts",
-  initialState: {
-    items: [], // holds trending posts array following successful fetch
-    status: "idle", // "idle" | "loading" | "succeeded" | "failed"
-    error: null, // holds error message if fetch fails
+  initialState: initialTrendingState,
+  reducers: {
+    resetTrending() {
+      return initialTrendingState;
+    },
   },
-  reducers: {},
   // handles the thunk lifecycle
   extraReducers: (builder) => {
     builder
@@ -65,5 +71,7 @@ export const selectTrendingPosts = (state) => state.trendingPosts.items;
 export const selectTrendingPostsStatus = (state) => state.trendingPosts.status;
 // Select error message  from async fetch failure
 export const selectTrendingPostsError = (state) => state.trendingPosts.error;
+
+export const { resetTrending } = trendingPostsSlice.actions;
 
 export default trendingPostsSlice.reducer;
