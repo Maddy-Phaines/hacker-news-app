@@ -3,7 +3,7 @@ import { formatDistanceToNow } from "date-fns";
 /**
  * Safely formats a date string into a relative time format (e.g., "3 days ago").
  *
- * Handles missing or invalid date inputs gracefully by returning "Unknown date"
+ * Handles missing or invalid date inputs by returning "Unknown date"
  * instead of throwing errors.
  *
  * @param {string} dateString - The date string to format.
