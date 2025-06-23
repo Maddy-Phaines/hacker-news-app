@@ -1,13 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Hacker News Reader</title>
   </head>
-  <body>
+  <body class="bg-[var(--bg)] text-[var(--copy)] antialiased transition-colors">
     <div id="root"></div>
+    <!-- script to remember user choice RE dark mode/light mode -->
+    <!-- Save/restore preference -->
+    <script>
+      const save = (prefer) => localStorage.setItem("theme", prefer);
+      const apply = () =>
+        document.documentElement.classList.toggle(
+          "dark",
+          localStorage.theme === "dark"
+        );
+      apply();
+
+      window.__toggleTheme = () => {
+        const isDark = document.documentElement.classList.toggle("dark");
+        save(isDark ? "dark" : "light");
+      };
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
