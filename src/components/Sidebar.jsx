@@ -10,7 +10,6 @@ import Loader from "./Loader";
 import ErrorMessage from "./ErrorMessage";
 import { useEffect } from "react";
 
-// Sidebar stub
 const Sidebar = () => {
   const dispatch = useDispatch();
   const { posts, status, error } = useTrendingPosts();
@@ -20,7 +19,7 @@ const Sidebar = () => {
   }, [dispatch]);
 
   return (
-    <aside className="p-4 rounded-md">
+    <aside className="p-3 rounded-md bg-[var(--sidebar-bg)]">
       <h2 className="text-lg font-semibold mb-4">Trending</h2>
       {status === "loading" && <Loader />}
       {status === "failed" && <ErrorMessage message={error} />}
