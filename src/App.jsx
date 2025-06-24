@@ -11,9 +11,9 @@ function App() {
       <Header />
       <main className="max-w-[1336px] mx-auto px-4 py-6 min-h-screen">
         <Routes>
+          <Route path="/posts/:id" element={<PostDetailPage />} />
           <Route path="/" element={<HomePage />} />
           <Route path="/search" element={<SearchResultsPage />} />
-          <Route path="/posts/:id" element={<PostDetailPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
