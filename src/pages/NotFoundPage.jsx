@@ -1,4 +1,4 @@
 function NotFoundPage() {
-  return <div>Home Page Placeholder</div>;
+  return <div>Not found Page Placeholder</div>;
 }
 export default NotFoundPage;
