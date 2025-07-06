@@ -1,83 +1,66 @@
-import { Search } from "lucide-react";
-import SearchBar from "./SearchBar";
+import React from "react";
 import { NavLink } from "react-router-dom";
+import { Search } from "lucide-react";
+
+import SearchBar from "./SearchBar";
 import ThemeToggle from "./ThemeToggle";
-import SelectCategory from "./SelectCategory";
+import HorizontalScroller from "./HorizontalScroller";
 
-/* Sticky top bar with app name, search, and category filter*/
+const menuItems = [
+  { to: "/", label: "Top" }, // ← use "/" so it goes back to your Top-stories route
+  { to: "/best", label: "Best" },
+  { to: "/ask", label: "Ask HN" },
+  { to: "/show", label: "Show HN" },
+  { to: "/polls", label: "Polls" },
+];
 
-function Header() {
+export default function Header() {
+  const linkClass = ({ isActive }) =>
+    isActive
+      ? "rounded-[16px] px-[0.825rem] py-[0.4rem] text-[var(--color-btn-text)] border-b-2 border-[var(--color-border)]"
+      : "rounded-[16px] px-[0.825rem] py-[0.4rem] hover:text-[var(--color-btn-bg)] hover:bg-[var(--color-btn-text)]";
+
   return (
-    <header className="w-full text-copy bg-[--bg] dark:bg-[--bg] text-[--copy]">
-      {/* ─────────────── Row 1: brand + search ─────────────── */}
+    <header className="w-full bg-[--bg] text-[--copy]">
+      {/* ─── Row 1: Brand + Search + ThemeToggle ─── */}
       <div className="w-full py-4">
         <div className="mx-auto px-4 flex items-center justify-between space-x-6">
-          {/* Brand on the far left */}
-          <div className="flex items-center gap-2">
-            <div className="ml-3">
-              <span className="font-bold">
-                Hacker <br />
-                News Reader
-              </span>
-            </div>
+          <a href="/" className="font-bold leading-tight">
+            Hacker
+            <br />
+            News Reader
+          </a>
 
-            {/* SearchBar immediately to its right */}
-            <div className="flex-1 w-full">
-              <SearchBar />
-            </div>
+          <div className="flex-1 flex justify-center">
+            <SearchBar />
           </div>
-          {/* other header icons/buttons (profile, etc.) */}
-          {/* <ProfileMenu /> */}
-          <div>
-            <ThemeToggle />
-          </div>
+
+          <ThemeToggle />
         </div>
       </div>
 
-      {/* Category Nav */}
-      {/* ─────────────── Row 2: HN nav links ─────────────── */}
-      <div
-        className="w-full flex items-center border-t border-b border-muted text-copy 
-      bg-surface"
-      >
-        <div className="max-w-6xl mx-auto px-4">
-          <nav className="flex space-x-8 text-sm font-medium text-[#DBE4E9] pb-2 pt-2">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-[var(--text-bright)] border-b-2 border-purple-600"
-                  : "hover:text-[var(--text-bright)] hover:bg-btn dark:hover:bg-btn rounded-[16px] px-[0.825rem] py-[0.4rem]"
-              }
-            >
-              Top
-            </NavLink>
-            <NavLink
-              to="/ask"
-              className="hover:text-[#FFFFFF] hover:bg-[#333D42] rounded-[16px] px-[0.825rem] py-[0.4rem]"
-            >
-              Ask HN
-            </NavLink>
-            <NavLink
-              to="/show"
-              className="hover:text-[#FFFFFF] hover:bg-[#333D42] rounded-[16px] px-[0.825rem] py-[0.4rem]"
-            >
-              Show HN
-            </NavLink>
-            <NavLink
-              to="/polls"
-              className="hover:text-[#FFFFFF] hover:bg-[#333D42] rounded-[16px] px-[0.825rem] py-[0.4rem]"
-            >
-              Polls
-            </NavLink>
+      {/* ─── Row 2: Category Nav ─── */}
+      <div className="w-full border-t border-b border-[var(--color-border)]">
+        <div className="max-w-6xl mx-auto px-4 w-full">
+          {/* Mobile: scrollable with chevrons */}
+          <HorizontalScroller className="md:hidden py-2">
+            {menuItems.map((item) => (
+              <NavLink key={item.to} to={item.to} className={linkClass}>
+                {item.label}
+              </NavLink>
+            ))}
+          </HorizontalScroller>
+
+          {/* Desktop: regular inline nav */}
+          <nav className="hidden md:flex space-x-8 text-sm font-medium py-2">
+            {menuItems.map((item) => (
+              <NavLink key={item.to} to={item.to} className={linkClass}>
+                {item.label}
+              </NavLink>
+            ))}
           </nav>
-        </div>
-        <div className="flex-1 max-w-md">
-          <SelectCategory />
         </div>
       </div>
     </header>
   );
 }
-
-export default Header;
