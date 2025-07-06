@@ -17,28 +17,27 @@ const TrendingItem = ({ title, author, url, created_at, objectId }) => {
                 />
               )}
             </div>
-            <div className="text-xs text-gray-500 flex gap-1">
+            <div className="text-xs flex gap-1">
               <div className="block pr-1">
-                <span className="text-[13px] leading-[20px] font-normal text-[#242424] break-all overflow-hidden truncate line-clamp-1">
+                <span className="text-[13px] leading-[20px] font-normal break-all overflow-hidden truncate line-clamp-1">
                   {extractDomain(url)}
                 </span>
               </div>
               <div className="py-0">
-                <p className="text-[13px] leading-[20px] font-normal text-[#242424] break-all overflow-hidden truncate line-clamp-1">
+                <p className="text-[13px] leading-[20px] font-normal break-all overflow-hidden truncate line-clamp-1">
                   by
                 </p>
               </div>
-              <p className="text-[13px] leading-[20px] font-normal text-[#242424] break-all overflow-hidden truncate line-clamp-1">
+              <p className="text-[13px] leading-[20px] font-normal break-all overflow-hidden truncate line-clamp-1">
                 {author}
               </p>
             </div>
           </div>
           <h2
             className="font-sohne
-    text-[#242424]
     font-bold
     text-base leading-6
-    truncate overflow-hidden
+    overflow-hidden
     m-0
     mdplus:text-[24px]
     mdplus:leading-[30px]
@@ -48,10 +47,7 @@ const TrendingItem = ({ title, author, url, created_at, objectId }) => {
           >
             {title}
           </h2>
-
-          <span className="text-[13px] text-gray-400">
-            {formatDateSafe(created_at)}
-          </span>
+          <span className="text-[13px]">{formatDateSafe(created_at)}</span>
         </a>
       </div>
     </div>

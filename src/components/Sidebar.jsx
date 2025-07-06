@@ -17,9 +17,11 @@ const Sidebar = () => {
   useEffect(() => {
     dispatch(fetchTrendingPosts());
   }, [dispatch]);
+  /* re: dark/default mode, Card, Sidebar, Header, Footer → specific backgrounds
 
+Button, Link, Alert → specific text/background/border */
   return (
-    <aside className="p-3 rounded-md bg-[var(--sidebar-bg)]">
+    <aside className="p-3 rounded-md bg-[var(--color-sidebar)]">
       <h2 className="text-lg font-semibold mb-4">Trending</h2>
       {status === "loading" && <Loader />}
       {status === "failed" && <ErrorMessage message={error} />}

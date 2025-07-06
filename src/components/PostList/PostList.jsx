@@ -5,8 +5,8 @@ import PostItem from "./PostItem";
 const PostList = ({ posts }) => {
   return (
     <div>
-      <div className="pt-4"></div>
-      <div className="border-t border-gray-200">
+      <div className="pt-1 md:pt-4"></div>
+      <div>
         {posts.map((post) => (
           <PostItem
             key={post.objectID}

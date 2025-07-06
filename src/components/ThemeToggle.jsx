@@ -1,16 +1,31 @@
+import { useState, useEffect } from "react";
+import { Sun, Moon } from "lucide-react";
+import Button from "./Button";
+
 function ThemeToggle() {
-  const handleClick = () => {
-    document.documentElement.classList.toggle("dark");
-    console.log("handleClick clicked");
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    const prefersDark = storedTheme === "dark";
+    document.documentElement.classList.toggle("dark", prefersDark);
+    setIsDark(prefersDark);
+  }, []);
+  const toggleDarkMode = () => {
+    const newMode = !isDark;
+    setIsDark(newMode);
+    document.documentElement.classList.toggle("dark", newMode);
+    localStorage.setItem("theme", newMode ? "dark" : "light");
   };
 
   return (
-    <button
-      onClick={handleClick}
-      className="px-3 py-1 rounded border-gray-500 hover:opacity-90 cursor-pointer"
-    >
-      Toggle theme
-    </button>
+    <>
+      {isDark ? (
+        <Sun onClick={toggleDarkMode}></Sun>
+      ) : (
+        <Moon onClick={toggleDarkMode}></Moon>
+      )}
+    </>
   );
 }
 export default ThemeToggle;

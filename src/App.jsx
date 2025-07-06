@@ -7,17 +7,19 @@ import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
-      <main className="max-w-[1336px] mx-auto px-4 py-6 min-h-screen">
-        <Routes>
-          <Route path="/posts/:id" element={<PostDetailPage />} />
-          <Route path="/" element={<HomePage />} />
-          <Route path="/search" element={<SearchResultsPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </main>
-    </BrowserRouter>
+    <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] transition-colors">
+      <BrowserRouter>
+        <Header />
+        <main className="max-w-[1336px] mx-auto bg-[var(--color-bg)]">
+          <Routes>
+            <Route path="/posts/:id" element={<PostDetailPage />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/search" element={<SearchResultsPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </main>
+      </BrowserRouter>
+    </div>
   );
 }
 
