@@ -1,7 +1,87 @@
 @import "tailwindcss";
 
 body {
-  /* color: rgba(0, 0, 0, 0.8); */
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+}
+
+/* hide-scrollbar utility */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE+Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+img {
+  vertical-align: middle;
+}
+
+.hidden {
+  display: hidden;
+}
+
+:root {
+  /* Light theme */
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f5f7ff;
+  --color-bg-tertiary: #bcc2ff;
+  --color-bg-neutral: #f9f9f9;
+  --color-bg-hover: #f9f9f9;
+  --color-header: #f2f2f2;
+  --color-sidebar: #f5f7ff;
+  --color-text: #242424;
+  --color-text-muted: #333d42;
+  --color-text-neutral: rgba(0, 0, 0, 0.6);
+  --color-heading: #242424;
+
+  --color-btn-bg: #00225b;
+  --color-btn-text: #f2f2f2;
+
+  --color-border: #e5e5e5;
+  --color-gray: #f2f2f2;
+  --color-bg-cotton: #e5edff;
+  --color-bg-pasta: #272343;
+  --color-contrast: #272343;
+}
+/* Dark theme overrides for Tailwind v4.1 */
+:where(.dark, .dark *) {
+  /* Dark theme overrides for Tailwind v4.1 */
+  --color-bg: #101214;
+  --color-bg-secondary: #00061e;
+  --color-bg-navy: #001034;
+  --color-bg-neutral: #333d42;
+  --color-bg-hover: #181c1f;
+  --color-header: #0e1113;
+  --color-sidebar: #070809;
+  --color-text: #f1f3ff;
+  --color-text-muted: #b7cad4;
+  --color-text-neutral: #8ba2ad;
+  --color-heading: #f1f3ff;
+
+  --color-btn-bg: #00225b;
+  --color-btn-text: #f2f2f2;
+
+  --color-btn-bg: #3a4fdc; /* bold and visible blue */
+  --color-btn-text: #ffffff;
+
+  --color-border: #2a3236;
+  --color-gray: #2a3236;
+
+  --color-bg-cotton: #e5edff;
+
+  --color-bg-pasta: #ffcb56;
+  --color-contrast: #272343;
+}
+
+html {
+  transition: background-color 0.3s, color 0.3s;
+}
+.text-neutral-gray {
+  color: #b7cad4;
+}
+
+/* Small paragraph utility */
+.p-sm {
+  font-size: 14px;
 }
