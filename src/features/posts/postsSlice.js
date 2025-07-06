@@ -11,7 +11,19 @@ export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
   }
 
   const data = await response.json();
-  return data.hits;
+  console.log(data.hits);
+
+  return data.hits.map((hit) => ({
+    objectID: hit.objectID,
+    title: hit.title,
+    url: hit.url,
+    author: hit.author,
+    points: hit.points,
+    num_comments: hit.num_comments,
+    created_at: hit.created_at,
+    story_text: hit.story_text,
+    _highlightResult: hit._highlightResult,
+  }));
 });
 
 export const initialPostState = {

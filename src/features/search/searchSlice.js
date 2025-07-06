@@ -5,15 +5,16 @@ export const fetchSearch = createAsyncThunk(
   "search/searchPosts",
   async ({ append = false }, { getState, rejectWithValue }) => {
     // thunkAPI.getState() reads query, page, sortBy and hitsPerPage from the slice
-    const { query, page, hitsPerPage, sortBy } = getState().search;
+    const { query, page, tag, hitsPerPage, sortBy } = getState().search;
     const nextPage = append ? page + 1 : 0;
     const endpoint = sortBy === "date" ? "search_by_date" : "search";
-    const url =
-      `https://hn.algolia.com/api/v1/${endpoint}?` +
-      `tags=story&` +
-      `query=${encodeURIComponent(query)}` +
-      `&hitsPerPage=${hitsPerPage}` +
-      `&page=${nextPage}`;
+    const url = new URL(`https://hn.algolia.com/api/v1/${endpoint}?`);
+    url.searchParams.set("query", query); // sets parameter and value
+    url.searchParams.set("page", page);
+    url.searchParams.set("hitsPerPage", hitsPerPage);
+    if (tag !== "all") {
+      url.searchParams.set("tags", tag);
+    }
 
     try {
       const response = await fetch(url);
@@ -45,6 +46,7 @@ export const fetchSearch = createAsyncThunk(
 
 const initialState = {
   query: "", // most recent search term
+  tag: "story",
   hits: [], // array of results
   page: 0, // current page index
   hitsPerPage: 10, // number of items to fetch per “load more”
@@ -60,17 +62,24 @@ const searchSlice = createSlice({
   name: "search",
   initialState,
   reducers: {
-    // Reset to default state
-    resetSearch() {
-      return initialState;
-    },
     /* …query/sortBy setters…*/
     setQuery(state, action) {
       state.query = action.payload;
+      if (!action.payload.trim()) {
+        state.hits = [];
+        state.totalHits = 0;
+        state.page = 0;
+      }
+    },
+    setTag(state, action) {
+      state.tag = action.payload;
+      state.page = 0;
+      state.hits = [];
     },
     setSortBy(state, action) {
       state.sortBy = action.payload;
     },
+    resetSearch: () => initialState, // Reset to default state
   },
   extraReducers: (builder) => {
     builder
@@ -96,22 +105,10 @@ const searchSlice = createSlice({
   },
 });
 
-// when search query changes, reset page to 0 and clear or overwirte existing hits.
-// have slice remember most recent search term as it will be needed to fulfill "load more"
-// functionality
-
-// selectors
-// hits/ array of results
-// loading/error status
-// whether there is more to load (hasMore)
-// totalHits
-// page
-// query, to display "Results for search term"
-// sortBy to show or control the current sort mode in tabs i.e., "Relevance-Date-Points"
-
 export const selectSearchQuery = (state) => state.search.query;
 export const selectSearchHits = (state) => state.search.hits;
 export const selectSearchStatus = (state) => state.search.status;
+export const selectSearchTag = (state) => state.search.tag;
 export const selectSearchError = (state) => state.search.error;
 export const selectSearchErrorCode = (state) => state.search.error?.code;
 export const selectSearchHasMore = (state) => state.search.hasMore;
@@ -120,6 +117,6 @@ export const selectSearchPage = (state) => state.search.page;
 export const selectSearchHitsPerPage = (state) => state.search.hitsPerPage;
 export const selectSearchSortBy = (state) => state.search.sortBy;
 
-export const { resetSearch, setQuery, setSortBy } = searchSlice.actions;
+export const { resetSearch, setQuery, setTag, setSortBy } = searchSlice.actions;
 
 export default searchSlice.reducer;
