@@ -15,6 +15,21 @@ export default {
         // ← new “only-mdplus” that runs from 904px up to 1079.98px
         "only-mdplus": { min: "904px", max: "1079.98px" },
       },
+      spacing: {
+        "header-gutter": "calc(50vw - 50%)",
+      },
+      boxShadow: {
+        "apple-glow": "0 0 30px rgba(0,121,255,0.6)",
+      },
+      keyframes: {
+        "glow-pulse": {
+          "0%,100%": { transform: "scale(0.9)", opacity: "0.6" },
+          "50%": { transform: "scale(1.1)", opacity: "1" },
+        },
+      },
+      animation: {
+        "glow-pulse": "glow-pulse 2s ease-in-out infinite",
+      },
     },
   },
   plugins: [lineClamp],
