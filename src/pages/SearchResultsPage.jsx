@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast, ToastContainer } from "react-toastify";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -22,8 +22,9 @@ import {
 import PostList from "../components/PostList/PostList";
 import Loader from "../components/Loader";
 import ErrorMessage from "../components/ErrorMessage";
-import Sidebar from "../components/SideBar";
+import Sidebar from "../components/SidebarA";
 import SelectCategory from "../components/SelectCategory";
+import Header from "../components/Header";
 
 const SearchResultsPage = () => {
   /* slice values */
@@ -78,11 +79,13 @@ const SearchResultsPage = () => {
     mx-auto px-4 
     py-6"
     >
+      <Header />
       {/* ───── Search summary + category nav ───── */}
       <header className="mb-1">
         <h1
-          className="text-[1.5rem]
+          className="hidden md:inline text-[1.5rem]
           font-medium
+          mb-5
           max-h-[30px] 
           leading-[1.25] 
           md:text-[42px] 
@@ -95,13 +98,13 @@ const SearchResultsPage = () => {
           <span className="italic lowercase">{query}</span>
         </h1>
 
-        <p className="text-sm text-grey-500 mt-2">
+        <p className="hidden md:inline mt-2 text-sm text-grey-500 mt-2">
           Page {page}: 1&nbsp;-&nbsp;{perPage} of {totalHits} results
         </p>
 
         {/* button-group */}
         <div className="w-full">
-          <div className="px-[1rem] lg:px-0">
+          <div className="px-[0.2rem] lg:px-0">
             <div className="pt-[1rem]">
               <nav>
                 <SelectCategory />
