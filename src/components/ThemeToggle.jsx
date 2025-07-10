@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Sun, Moon } from "lucide-react";
 import Button from "./Button";
+import AppTooltip from "./AppTooltip";
+import Fade from "@mui/material/Fade";
 
 function ThemeToggle() {
   const [isDark, setIsDark] = useState(false);
@@ -19,13 +21,49 @@ function ThemeToggle() {
   };
 
   return (
-    <>
-      {isDark ? (
-        <Sun onClick={toggleDarkMode}></Sun>
-      ) : (
-        <Moon onClick={toggleDarkMode}></Moon>
-      )}
-    </>
+    <div className="px-[var(--gap-c-xs)]">
+      <AppTooltip
+        title="Toggle dark mode"
+        placement="bottom"
+        arrow
+        TransitionComponent={Fade}
+        TransitionProps={{ timeout: 600 }}
+      >
+        <button
+          type="button"
+          onClick={toggleDarkMode}
+          aria-label="Toggle dark mode"
+          className="
+        p-2
+        rounded-full
+        bg-transparent
+        hover:bg-[rgba(59,130,246,0.2)]
+        hover:shadow-apple-glow
+        transition duration-200
+        focus:outline-none
+        focus-visible:ring-2
+        focus-visible:ring-blue-400
+        focus-visible:ring-offset-2
+        inline-flex items-center justify-center"
+        >
+          {isDark ? (
+            <Sun
+              onClick={toggleDarkMode}
+              className="
+              cursor-pointer 
+              text-[var(--color-icon-blue)]"
+            ></Sun>
+          ) : (
+            <Moon
+              onClick={toggleDarkMode}
+              className="
+            cursor-pointer
+            text-[var(--color-icon-blue)]"
+            ></Moon>
+          )}
+        </button>
+      </AppTooltip>
+    </div>
   );
 }
 export default ThemeToggle;

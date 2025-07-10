@@ -30,7 +30,7 @@ const PostItem = ({
   }
   return (
     <div className="flex justify-center">
-      <div className="my-0 mx-[24px] min-width-0 w-full">
+      <div className="my-0 md:mx-[24px] min-width-0 w-full">
         <div className="mt-[32px] block w-full">
           <article>
             <div className="block">

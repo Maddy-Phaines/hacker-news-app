@@ -31,7 +31,16 @@ export default function HorizontalScroller({ children, className = "" }) {
     <div className={`relative ${className}`}>
       {canScrollLeft && (
         <button
-          className="absolute left-0 top-0 h-full px-2 bg-gradient-to-r from-white dark:from-gray-900 z-10"
+          className="absolute
+          bg-[var(--color-bg)] 
+          inline-flex 
+          items-center
+          justify-center
+          left-0 
+          top-0 
+          h-full 
+          px-[0.75rem] 
+          z-10"
           onClick={() => scrollBy(-scrollerRef.current.clientWidth / 2)}
         >
           <MdChevronLeft size={24} />
@@ -41,14 +50,21 @@ export default function HorizontalScroller({ children, className = "" }) {
       <div
         ref={scrollerRef}
         onScroll={updateArrows}
-        className="overflow-x-auto whitespace-nowrap scroll-smooth hide-scrollbar"
+        className="overflow-x-auto 
+        whitespace-nowrap 
+        scroll-smooth 
+        hide-scrollbar"
       >
         {children}
       </div>
 
       {canScrollRight && (
         <button
-          className="absolute right-0 top-0 h-full px-2 bg-gradient-to-l from-white dark:from-gray-900 z-10"
+          className="absolute
+          bg-[var(--color-bg)]
+          inline-flex 
+          items-center
+          justify-center right-0 top-0 h-full px-2 z-10"
           onClick={() => scrollBy(scrollerRef.current.clientWidth / 2)}
         >
           <MdChevronRight size={24} />

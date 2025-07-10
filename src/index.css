@@ -1,28 +1,18 @@
 @import "tailwindcss";
 
-body {
+html {
   font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-/* hide-scrollbar utility */
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.hide-scrollbar {
-  -ms-overflow-style: none; /* IE+Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-img {
-  vertical-align: middle;
-}
-
-.hidden {
-  display: hidden;
+body {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.5;
 }
 
 :root {
-  /* Light theme */
+  /* Color tokens */
   --color-bg: #ffffff;
   --color-bg-secondary: #f5f7ff;
   --color-bg-tertiary: #bcc2ff;
@@ -34,7 +24,8 @@ img {
   --color-text-muted: #333d42;
   --color-text-neutral: rgba(0, 0, 0, 0.6);
   --color-heading: #242424;
-
+  --color-icon: rgba(0, 0, 0, 0.6);
+  --color-icon-blue: hsl(210, 100%, 45%);
   --color-btn-bg: #00225b;
   --color-btn-text: #f2f2f2;
 
@@ -42,46 +33,71 @@ img {
   --color-gray: #f2f2f2;
   --color-bg-cotton: #e5edff;
   --color-bg-pasta: #272343;
-  --color-contrast: #272343;
+  --color-contrast: #ffcb56;
+  --plain-background: rgba(0, 0, 0, 0);
+  --color-neutral-background: #0e1113;
+
+  /* ── Layout & spacing tokens ───────────────────────────────────── */
+  --header-height: 56px;
+  --bottom-padding: 52px;
+
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.75rem;
+  --spacing-page-y: var(--header-height);
+  --spacing-page-x: 1rem;
+  --gap-c-xs: 0.5rem;
+  --button-gap: 0.5rem;
+  --anim-duration: 300ms;
+
+  --icon-height: 2.5rem;
 }
-/* Dark theme overrides for Tailwind v4.1 */
+/* Dark theme overrides  */
 :where(.dark, .dark *) {
-  /* Dark theme overrides for Tailwind v4.1 */
   --color-bg: #101214;
   --color-bg-secondary: #00061e;
-  --color-bg-navy: #001034;
   --color-bg-neutral: #333d42;
-  --color-bg-hover: #181c1f;
   --color-header: #0e1113;
   --color-sidebar: #070809;
   --color-text: #f1f3ff;
   --color-text-muted: #b7cad4;
   --color-text-neutral: #8ba2ad;
-  --color-heading: #f1f3ff;
-
-  --color-btn-bg: #00225b;
-  --color-btn-text: #f2f2f2;
-
-  --color-btn-bg: #3a4fdc; /* bold and visible blue */
-  --color-btn-text: #ffffff;
-
+  --color-text-neutral-2: #dbe4e9;
   --color-border: #2a3236;
+  --color-btn-bg: #00225b;
+  --color-btn-text: #ffffff;
+  --color-icon: rgba(0, 0, 0, 0.6);
+  --color-icon-blue: #66b3ff;
+
   --color-gray: #2a3236;
-
   --color-bg-cotton: #e5edff;
-
   --color-bg-pasta: #ffcb56;
   --color-contrast: #272343;
 }
 
-html {
-  transition: background-color 0.3s, color 0.3s;
-}
-.text-neutral-gray {
-  color: #b7cad4;
+.text-12 {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 /* Small paragraph utility */
 .p-sm {
-  font-size: 14px;
+  font-size: 0.875rem; /* 14px */
+}
+
+.border-t-sm {
+  border-top-width: 0.0625rem;
+}
+
+/* hide-scrollbar utility */
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE+Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+img {
+  vertical-align: middle;
 }
