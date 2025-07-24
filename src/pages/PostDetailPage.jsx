@@ -40,29 +40,29 @@ function PostDetailPage() {
 
   return (
     <div
-      className="w-full 
+      className="
     bg-[var(--color-bg)] z-6"
     >
       <Header />
       <div
-        className="mx-auto min-h-screen border border-[#FFC0CB] 
-      "
+        className="min-h-screen
+        lg:w-[1000px] mx-auto"
       >
         <div className="mx-auto min-w-0 min-h-screen pt-5">
           <div
-            className="grid 
+            className="grid
           md:grid-cols-[minmax(0,756px)_minmax(0,316px)] 
         gap-9 border"
           >
             <div
               className="bg-[var(--color-bg)]
       cursor-pointer my-[0.25rem] p-[1rem] 
-      rounded-[0.5rem] md:rounded-2xl border"
+      rounded-[0.5rem] md:rounded-2xl"
             >
               <details role="article" open actioned className="">
-                <summary className="grid grid-cols-[24px_minmax(0,1fr)] xs:grid-cols-[32px_minmax(0,1fr)] border">
+                <summary className="grid grid-cols-[24px_minmax(0,1fr)] xs:grid-cols-[32px_minmax(0,1fr)]">
                   <div className="flex flex-row items-center">
-                    <div className="flex items-center">
+                    <div className="flex items-center outline">
                       <a className="flex items-center my-[0.25rem] md:mr-[0.75rem]">
                         <span className="inline-flex items-center justify-center w-[2rem] h-[2rem]">
                           <span
@@ -98,7 +98,7 @@ function PostDetailPage() {
                       <div
                         className="flex flex-col 
                       overflow-hidden text-[0.875rem]
-                      border"
+                      "
                       >
                         <span
                           className="ml-1 mr-1 
@@ -128,8 +128,6 @@ function PostDetailPage() {
               </details>
               <div
                 className="
-                border
-                border-[#FFC0CB] 
                 rounded-[0.5rem] 
                 grid grid-cols-[24px_1fr] 
                 relative 
@@ -144,8 +142,8 @@ function PostDetailPage() {
                   <div
                     className="       
             border-[#FFFFFF19] 
-            rounded-t-[0.5rem] 
             border-[0.0625rem] 
+            rounded-t-[0.5rem] 
             text-12 py-[0.25rem] 
             overflow-hidden"
                   >
@@ -155,7 +153,7 @@ function PostDetailPage() {
                     >
                       <h1
                         className="font-bold 
-            mr-1 md:mt-0 mb-[1rem] border text-[var(--color-text-neutral)]
+            mr-1 md:mt-0 mb-[1rem] text-[var(--color-text-neutral)]
             line-clamp-3"
                       >
                         {detail.title}
