@@ -1,51 +1,78 @@
-/* Redux data flow -> HomePage dispatches the fetchPosts action*/
-import { useDispatch } from "react-redux";
-import { fetchPosts } from "../features/posts/postsSlice";
+// src/pages/HomePage.jsx
 import { useEffect } from "react";
-import { usePosts } from "../hooks/usePosts";
-import Loader from "../components/Loader";
-import ErrorMessage from "../components/ErrorMessage";
-import PostList from "../components/PostList/PostList";
-import Sidebar from "../components/SidebarA";
+import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import Header from "../components/Header";
+import PageContainer from "../components/PageContainer";
+import ErrorMessage from "../components/ErrorMessage";
+import PostList from "../components/PostList";
 import TrendingRail from "../components/TrendingRail";
 
-function HomePage() {
-  // Get Redux dispatch function for triggering actions
+import { usePosts } from "../hooks/usePosts";
+import { setTab } from "../features/ui/uiSlice";
+import slugifyTag from "../utils/slugifyTag";
+import useNProgress from "../hooks/useNProgress";
+
+export default function HomePage() {
+  const { tag } = useParams(); // "ask", "show", "polls" or undefined
   const dispatch = useDispatch();
   const { posts, status, error } = usePosts();
 
+  useNProgress(status === "loading");
+
+  // keep uiSlice in sync with URL
   useEffect(() => {
-    dispatch(fetchPosts());
-  }, [dispatch]); // Runs once on first render to display top stories when HomePage loads
+    const normalized = tag ? slugifyTag(tag) : "front_page";
+    dispatch(setTab(normalized));
+  }, [tag, dispatch]);
 
   return (
-    <div className="w-full">
+    <div className="">
       <Header />
-
-      <div
-        className="pt-[var(--header-height)]
-        max-w-6xl 
-        mx-auto px-4 
-        py-6"
-      >
-        {status === "loading" && <Loader />}
+      <PageContainer>
         {status === "failed" && <ErrorMessage message={error} />}
         {status === "succeeded" && (
           <div
-            className="grid 
-          grid-cols-[minmax(0,1fr)] 
-          md:grid-cols-[minmax(0,756px)_minmax(0,316px)] gap-8"
-          >
-            <div className="flex-1">
-              <PostList posts={posts} />
-            </div>
+            className="
+              flex flex-col
+              lg:flex-row
+              gap-8
 
-            <TrendingRail />
+              /* center & constrain overall 
+              layout */
+              px-0 
+              
+            "
+          >
+            {/** LEFT COLUMN: only for non‑Best tabs */}
+            {tag !== "best" && (
+              <div
+                className="min-w-0 
+              border-r 
+              border-[var(--color-border)] 
+              mx-[24px]"
+              >
+                <PostList posts={posts} />
+              </div>
+            )}
+
+            {/** RIGHT COLUMN on non‑Best, MAIN COLUMN on Best */}
+            <div
+              className={`
+                ${
+                  tag === "best"
+                    ? /* Best: use the flex-1 main column instead of sidebar */
+                      "flex-1 min-w-0 px-4 mx-1 sm:mx-2"
+                    : /* Other tabs: fixed sidebar on desktop */
+                      "flex-none w-full lg:w-[320px] pt-[2rem]"
+                }
+              `}
+            >
+              <TrendingRail />
+            </div>
           </div>
         )}
-      </div>
+      </PageContainer>
     </div>
   );
 }
-export default HomePage;

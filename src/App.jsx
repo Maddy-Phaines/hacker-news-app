@@ -8,14 +8,15 @@ import SearchBarPage from "./components/SearchBarPage";
 function App() {
   return (
     <div
-      className="min-h-screen bg-[var(--color-bg)] 
+      className="min-h-screen min-w-screen 
     text-[var(--color-text)] transition-colors"
     >
       <BrowserRouter>
-        <main className="max-w-[1336px] mx-auto bg-[var(--color-bg)]">
+        <main>
           <Routes>
-            <Route path="/posts/:id" element={<PostDetailPage />} />
             <Route path="/" element={<HomePage />} />
+            <Route path="/:tag" element={<HomePage />} />
+            <Route path="/posts/:id" element={<PostDetailPage />} />
             <Route path="/search" element={<SearchResultsPage />} />
             <Route path="/searchpage" element={<SearchBarPage />} />
             <Route path="*" element={<NotFoundPage />} />
