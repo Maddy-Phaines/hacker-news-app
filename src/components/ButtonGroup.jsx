@@ -1,33 +1,13 @@
 // ButtonGroup.jsx
 import clsx from "clsx";
+import { wrap } from "framer-motion";
 
 /**
  * ButtonGroup – groups multiple buttons with consistent layout.
  */
-const ButtonGroup = ({
-  children,
-  orientation = "horizontal", // "horizontal" | "vertical"
-  align = "start", // "start" | "center" | "end"
-  spacing = "gap-2", // e.g. "gap-2", "gap-4"
-  className,
-}) => {
-  const isVertical = orientation === "vertical";
-
+const ButtonGroup = ({ children }) => {
   return (
-    <div
-      role="group"
-      className={clsx(
-        "flex",
-        isVertical ? "flex-col" : "flex-row",
-        {
-          "items-start": align === "start",
-          "items-center": align === "center",
-          "items-end": align === "end",
-        },
-        spacing,
-        className
-      )}
-    >
+    <div role="group" className="whitespace-nowrap">
       {children}
     </div>
   );

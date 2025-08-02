@@ -12,7 +12,7 @@ const Button = ({
   className,
 }) => {
   const baseStyles =
-    "inline-flex items-center justify-center rounded-full text-[0.875rem] font-medium transition-colors focus:outline focus:ring-2 focus:ring-offset-2";
+    "inline-flex items-center justify-center rounded-full text-[0.875rem] font-medium transition-colors cursor-pointer mr-2";
 
   const sizeStyles = {
     sm: "text-sm px-3 py-1",
@@ -26,7 +26,7 @@ const Button = ({
     ghost:
       "bg-transparent  hover:bg-[var(--color-btn-bg)] hover:text-[var(--color-btn-text)]",
     outline:
-      "border border-[var(--color-btn-bg)] text-[var(--color-btn-bg)] hover:bg-[var(--color-btn-bg)] hover:text-[var(--color-btn-text)]",
+      "border text-[var(--color-btn-bg)] hover:bg-[var(--color-btn-bg)] hover:text-[var(--color-btn-text)]",
   }[variant];
 
   return (

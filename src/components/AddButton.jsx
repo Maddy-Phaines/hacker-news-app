@@ -1,19 +1,10 @@
 import { PlusCircle } from "lucide-react";
-import { MinusCircle } from "lucide-react";
-const AddButton = () => {
-  return (
-    <button
-      type="button"
-      className="p-2 rounded-full bg-transparent 
-      text-[var(--color-text-neutral)] 
-      inline-flex items-center 
-      justify-center
-      cursor-pointer"
-      aria-label="Add item"
-    >
-      <PlusCircle size={20} strokeWidth={2} />
-    </button>
-  );
-};
+
+// Just render the icon in a span — the parent <button> is what actually handles clicks
+const AddButton = () => (
+  <span className="inline-flex items-center justify-center text-[var(--color-text-neutral)]">
+    <PlusCircle size={20} strokeWidth={2} aria-hidden="true" />
+  </span>
+);
 
 export default AddButton;

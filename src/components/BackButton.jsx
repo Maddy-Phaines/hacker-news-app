@@ -16,6 +16,7 @@ function BackButton({ onClick }) {
         onClick={onClick}
         aria-label="Go back"
         className="
+        cursor-pointer
         p-2
         rounded-full
         bg-transparent
@@ -26,7 +27,8 @@ function BackButton({ onClick }) {
         focus-visible:ring-2
         focus-visible:ring-blue-400
         focus-visible:ring-offset-2
-        inline-flex items-center justify-center"
+        inline-flex items-center 
+        justify-center"
       >
         <ArrowLeft
           className="
