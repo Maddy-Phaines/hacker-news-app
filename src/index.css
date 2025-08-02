@@ -3,32 +3,47 @@
 html {
   font-size: 16px;
   transition: background-color 0.3s, color 0.3s;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   word-break: break-word;
   overflow-wrap: break-word;
   line-height: 1.5;
+  overflow-x: hidden;
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: sans-serif-font, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 :root {
   /* Color tokens */
   --color-bg: #ffffff;
   --color-bg-secondary: #f5f7ff;
-  --color-bg-tertiary: #bcc2ff;
+  --color-bg-tertiary: #6b6b6b; /*#bcc2ff*/
   --color-bg-neutral: #f9f9f9;
   --color-bg-hover: #f9f9f9;
+  --color-bg-panel: #f6f8f9;
+  --color-bg-replies: transparent;
+  --color-border-reply: #e1e5e7;
   --color-header: #f2f2f2;
   --color-sidebar: #f5f7ff;
   --color-text: #242424;
   --color-text-muted: #333d42;
   --color-text-neutral: rgba(0, 0, 0, 0.6);
+  --color-text-neutral-2: #2a3c42;
   --color-heading: #242424;
   --color-icon: rgba(0, 0, 0, 0.6);
   --color-icon-blue: hsl(210, 100%, 45%);
   --color-btn-bg: #00225b;
   --color-btn-text: #f2f2f2;
-
+  --color-silver-dark-text: #6b6b6b;
+  --color-dark-text: #242424;
   --color-border: #e5e5e5;
   --color-gray: #f2f2f2;
   --color-bg-cotton: #e5edff;
@@ -38,7 +53,7 @@ body {
   --color-neutral-background: #0e1113;
 
   /* ── Layout & spacing tokens ───────────────────────────────────── */
-  --header-height: 56px;
+  --header-height: 68px;
   --bottom-padding: 52px;
 
   --spacing-xs: 0.25rem;
@@ -49,13 +64,19 @@ body {
   --button-gap: 0.5rem;
   --anim-duration: 300ms;
 
-  --icon-height: 2.5rem;
+  --icon-height: 3rem;
 }
 /* Dark theme overrides  */
 :where(.dark, .dark *) {
-  --color-bg: #101214;
+  --color-bg: #131313; /* #101214 */
   --color-bg-secondary: #00061e;
+  --color-bg-tertiary: #f9f9f9;
   --color-bg-neutral: #333d42;
+  --color-bg-hover: #181c1f;
+  --color-bg-hover-darker: #16191c;
+  --color-bg-panel: #181c1f;
+  --color-bg-replies: hsla(210, 14%, 9%, 0.8);
+  --color-border-reply: transparent;
   --color-header: #0e1113;
   --color-sidebar: #070809;
   --color-text: #f1f3ff;
@@ -65,6 +86,8 @@ body {
   --color-border: #2a3236;
   --color-btn-bg: #00225b;
   --color-btn-text: #ffffff;
+  --color-silver-dark-text: #8ba2ad;
+  --color-dark-text: #8ba2ad;
   --color-icon: rgba(0, 0, 0, 0.6);
   --color-icon-blue: #66b3ff;
 
@@ -77,6 +100,10 @@ body {
 .text-12 {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+#no-of {
+  overflow: initial !important;
 }
 
 /* Small paragraph utility */
@@ -98,6 +125,51 @@ body {
   display: none;
 }
 
-img {
+img,
+svg {
   vertical-align: middle;
+}
+
+/* Apply to any element with .scrollable */
+.scrollable {
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #4b5563 transparent; /* thumb, track */
+}
+
+/* WebKit (Chrome, Safari, Edge) */
+.scrollable::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-bg-neutral);
+}
+.scrollable::-webkit-scrollbar-track {
+  background: var(--color-bg-neutral);
+}
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: var(--color-bg-neutral);
+  border-radius: 4px;
+  border: 4px solid transparent; /* gives some ‘padding’ */
+  background-clip: content-box;
+}
+
+/* hide scrollbar for WebKit */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* hide scrollbar for IE, Edge & Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Customize bar color and thickness */
+#nprogress .bar {
+  background: var(--color-bg-pasta); /* or your brand color */
+  height: 3px;
+}
+
+/* Hide the spinner icon */
+#nprogress .spinner {
+  display: none;
 }

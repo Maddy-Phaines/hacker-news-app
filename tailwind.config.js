@@ -20,7 +20,10 @@ export default {
       },
       boxShadow: {
         "apple-glow": "0 0 30px rgba(0,121,255,0.6)",
+        "custom-glow":
+          "0 0.0625rem 0.25rem 0 #00000054, 0 0.25rem 0.25rem 0 #00000054",
       },
+
       keyframes: {
         "glow-pulse": {
           "0%,100%": { transform: "scale(0.9)", opacity: "0.6" },
