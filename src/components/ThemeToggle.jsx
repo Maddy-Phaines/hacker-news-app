@@ -21,7 +21,7 @@ function ThemeToggle() {
   };
 
   return (
-    <div className="px-[var(--gap-c-xs)]">
+    <div className="pl-[calc(var(--gap-c-xs) - 5px)]">
       <AppTooltip
         title="Toggle dark mode"
         placement="bottom"
@@ -34,7 +34,7 @@ function ThemeToggle() {
           onClick={toggleDarkMode}
           aria-label="Toggle dark mode"
           className="
-        p-2
+        p-3
         rounded-full
         bg-transparent
         hover:bg-[rgba(59,130,246,0.2)]
