@@ -1,43 +1,53 @@
 import { useNavigate } from "react-router-dom";
 import { Search as SearchIcon } from "lucide-react";
+import Fade from "@mui/material/Fade";
+import AppTooltip from "./AppTooltip";
 // SearchButton with read-only input. Reroutes user to SearchBarPage
 // onClick/focus. Import into and use in Header. Hide input on v small
 // screens and show only the search icon
 const SearchButton = () => {
   const navigate = useNavigate();
-  const go = () => {
+  const handleClick = () => {
     navigate("/searchpage");
   };
 
   return (
-    <div className="relative flex items-center w-full max-w-[750px]">
-      {/* 1) Always-visible icon button */}
-      <button
-        type="button"
-        onClick={go}
-        aria-label="Open search"
-        className="p-[var(--gap-c-xs)]
-        flex
-        items-center
-        justify-center
-        max-w-[var(--icon-height)]
-        text-[var(--color-text-muted)] 
-        hover:text-[var(--color-text)]
-        cursor-pointer
-        focus:outline-none
-        rounded-full
-        bg-[var(--color-bg-neutral)]
-        border border-[var(--color-border)]"
+    <div
+      className="relative flex 
+    items-center"
+    >
+      <AppTooltip
+        title="Go to search page"
+        placement="bottom"
+        arrow
+        TransitionComponent={Fade}
+        TransitionProps={{ timeout: 600 }}
       >
-        <div className="max-h-[var(--icon-height)]">
+        {/* 1) Always-visible icon button */}
+        <button
+          type="button"
+          onClick={handleClick}
+          aria-label="Go to search page"
+          className="flex items-center justify-center rounded-full w-10 h-10 bg-[var(--color-bg-pasta)]
+        rounded-full
+        bg-[var(--color-bg-pasta)]
+        text-[var(--color-contrast)]
+        hover:bg-[rgba(59,130,246,0.2)]
+        hover:shadow-apple-glow
+        transition duration-200
+        focus:outline-none
+        focus-visible:ring-2
+        focus-visible:ring-blue-400
+        focus-visible:ring-offset-2"
+        >
           <SearchIcon
             className="
           h-5 
           w-5
           cursor-pointer"
           />
-        </div>
-      </button>
+        </button>
+      </AppTooltip>
     </div>
   );
 };

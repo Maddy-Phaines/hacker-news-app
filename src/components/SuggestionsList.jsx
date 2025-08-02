@@ -51,7 +51,7 @@ export default function SuggestionsList({ query = "" }) {
     );
   }
 
-  // …render your loading / empty / list UI…
+  // …render loading / empty / list UI…
   return (
     <ul
       className="mt-0 
