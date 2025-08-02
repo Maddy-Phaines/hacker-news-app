@@ -1,14 +1,14 @@
-// components/Sidebar.jsx
 export default function Sidebar({ children }) {
   return (
     <aside
       className="
-        p-3
+        sticky top-[var(--header-height)]
         border-t border-[var(--color-border)]
-        sticky top-[57px]
-        bg-[var(--color-sidebar)]
-        /* …any other layout/theming you need… */
+        px-4
+        pb-4
+        z[999]
       "
+      aria-label="Sidebar content"
     >
       {children}
     </aside>

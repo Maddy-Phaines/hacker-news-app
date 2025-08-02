@@ -17,7 +17,7 @@ const TAGS = [
   { id: "show_hn", label: "ShowHn" },
   { id: "poll", label: "Polls" },
 ];
-const SelectCategory = ({ categories, selected, onSelect }) => {
+const SelectCategory = ({ categories, selected, onSelect, className }) => {
   const dispatch = useDispatch();
   const query = useSelector(selectSearchQuery);
   const status = useSelector(selectSearchStatus);
@@ -38,20 +38,39 @@ const SelectCategory = ({ categories, selected, onSelect }) => {
   };
 
   return (
-    <HorizontalScroller className="py-2">
-      <ButtonGroup className="flex">
-        {TAGS.map((tag) => (
-          <Button
-            aria-pressed={tag.id === activeTag}
-            key={tag.id}
-            onClick={() => handleClick(tag.id)}
-            variant={tag.id === activeTag ? "default" : "ghost"}
-          >
-            {tag.label}
-          </Button>
-        ))}
-      </ButtonGroup>
-    </HorizontalScroller>
+    <>
+      {/* Mobile: Scrolling layout */}
+      <div className="block md:hidden">
+        <HorizontalScroller>
+          <ButtonGroup className="outline">
+            {TAGS.map((tag) => (
+              <Button
+                key={tag.id}
+                onClick={() => handleClick(tag.id)}
+                variant={tag.id === activeTag ? "default" : "ghost"}
+              >
+                {tag.label}
+              </Button>
+            ))}
+          </ButtonGroup>
+        </HorizontalScroller>
+      </div>
+
+      {/* Desktop: Inline layout */}
+      <div className="hidden md:flex space-x-8">
+        <ButtonGroup className="">
+          {TAGS.map((tag) => (
+            <Button
+              key={tag.id}
+              onClick={() => handleClick(tag.id)}
+              variant={tag.id === activeTag ? "default" : "ghost"}
+            >
+              {tag.label}
+            </Button>
+          ))}
+        </ButtonGroup>
+      </div>
+    </>
   );
 };
 

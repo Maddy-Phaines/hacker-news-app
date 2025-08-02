@@ -6,7 +6,7 @@ import {
 } from "../features/trendingPosts/trendingPostsSlice";
 import { useTrendingPosts } from "../hooks/useTrendingPosts";
 import TrendingList from "./TrendingList";
-import Loader from "./Loader";
+import useNProgress from "../hooks/useNProgress";
 import ErrorMessage from "./ErrorMessage";
 import { useEffect } from "react";
 
@@ -31,7 +31,7 @@ Button, Link, Alert → specific text/background/border */
           <h2 className="text-[14px] font-semibold">TRENDING TODAY</h2>
         </div>
       </div>
-      {status === "loading" && <Loader />}
+      {useNProgress(status === "loading")}
       {status === "failed" && <ErrorMessage message={error} />}
       {status === "succeeded" && <TrendingList trendingPosts={posts} />}
     </aside>
