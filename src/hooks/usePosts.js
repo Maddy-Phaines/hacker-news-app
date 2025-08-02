@@ -1,19 +1,31 @@
+// src/hooks/usePosts.js
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
-  selectPosts,
-  selectPostsStatus,
-  selectPostsError,
+  fetchPostsByTag,
+  selectPostsByTag,
+  selectPostsStatusByTag,
+  selectPostsErrorByTag,
 } from "../features/posts/postsSlice";
-import { useSelector } from "react-redux";
+import { selectCurrentTag } from "../features/ui/uiSlice";
 
-export const usePosts = () => {
-  const posts = useSelector(selectPosts);
-  // Select current loading status ("idle" | "loading" | "succeeded" | "failed") from the store
-  const status = useSelector(selectPostsStatus);
-  // Select error message from the store
-  const error = useSelector(selectPostsError);
-  return {
-    posts,
-    status,
-    error,
-  };
-};
+export function usePosts() {
+  const dispatch = useDispatch();
+  const currentTag = useSelector(selectCurrentTag);
+
+  const posts = useSelector((state) => selectPostsByTag(state, currentTag));
+  const status = useSelector((state) =>
+    selectPostsStatusByTag(state, currentTag)
+  );
+  const error = useSelector((state) =>
+    selectPostsErrorByTag(state, currentTag)
+  );
+
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(fetchPostsByTag(currentTag));
+    }
+  }, [currentTag, status, dispatch]);
+
+  return { posts, status, error };
+}
