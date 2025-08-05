@@ -12,10 +12,6 @@ import SuggestionsList from "./SuggestionsList";
 import TrendingRail from "./TrendingRail";
 import ThemeToggle from "./ThemeToggle";
 import { XCircle } from "lucide-react";
-import Tooltip from "@mui/material/Tooltip";
-import IconButton from "@mui/material/IconButton";
-import AppTooltip from "./AppTooltip";
-import Fade from "@mui/material/Fade";
 import { SearchIcon } from "lucide-react";
 
 const SearchBarPage = () => {
