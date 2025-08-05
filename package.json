@@ -1,8 +1,26 @@
 {
-  "name": "hacker-news-app",
+  "name": "hacker-news-reader",
+  "version": "1.0.0",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "description": "A front-end portfolio project: Hacker News Reader built with React, Tailwind CSS, and Framer Motion. Includes search, nested comments, and accessible design.",
+  "keywords": [
+    "react",
+    "tailwindcss",
+    "vite",
+    "framer-motion",
+    "lucide-react",
+    "hacker-news",
+    "portfolio",
+    "frontend",
+    "accessibility"
+  ],
+  "author": "Maddy P-Haines",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Maddy-Phaines/hacker-news-app"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,8 +28,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.1",
     "@heroicons/react": "^2.2.0",
     "@mui/icons-material": "^7.2.0",
     "@mui/material": "^7.2.0",
