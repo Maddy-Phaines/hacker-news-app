@@ -1,16 +1,9 @@
 import { ArrowLeft } from "lucide-react";
 import AppTooltip from "./AppTooltip";
-import Fade from "@mui/material/Fade";
 
 function BackButton({ onClick }) {
   return (
-    <AppTooltip
-      title="Go back"
-      placement="bottom"
-      arrow
-      TransitionComponent={Fade}
-      TransitionProps={{ timeout: 600 }}
-    >
+    <AppTooltip content="Go back" side="bottom">
       <button
         type="button"
         onClick={onClick}
