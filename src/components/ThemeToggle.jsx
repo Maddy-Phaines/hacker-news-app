@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { Sun, Moon } from "lucide-react";
-import Button from "./Button";
 import AppTooltip from "./AppTooltip";
-import Fade from "@mui/material/Fade";
 
 function ThemeToggle() {
   const [isDark, setIsDark] = useState(false);
@@ -22,13 +20,7 @@ function ThemeToggle() {
 
   return (
     <div className="pl-[calc(var(--gap-c-xs) - 5px)]">
-      <AppTooltip
-        title="Toggle dark mode"
-        placement="bottom"
-        arrow
-        TransitionComponent={Fade}
-        TransitionProps={{ timeout: 600 }}
-      >
+      <AppTooltip content="Toggle dark mode" side="bottom">
         <button
           type="button"
           onClick={toggleDarkMode}
