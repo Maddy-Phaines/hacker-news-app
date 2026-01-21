@@ -9,7 +9,7 @@ This project focuses on **real-world data handling**, **component architecture**
 
 ## 🚀 Live Demo
 
-🔗 https://your-live-url.com
+🔗 https://hacker-news-app-omega.vercel.app/
 
 ---
 
@@ -74,7 +74,7 @@ src/
 
 | Category       | Score |
 | -------------- | ----- |
-| Performance    | 95+   |
+| Performance    | 98    |
 | Accessibility  | 100   |
 | Best Practices | 100   |
 | SEO            | 100   |
