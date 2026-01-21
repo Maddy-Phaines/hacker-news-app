@@ -20,14 +20,14 @@ import {
 
 import PostList from "../components/post/PostList";
 import ErrorMessage from "../components/ErrorMessage";
-import Sidebar from "../components/SidebarA";
+import Sidebar from "../components/navigation/SidebarA";
 import SelectCategory from "../components/SelectCategory";
-import Header from "../components/Header";
+import Header from "../components/navigation/Header";
 
 const SearchResultsPage = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const location = useLocation();
+  const _navigate = useNavigate();
+  const _location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
 
   // Redux state
@@ -37,9 +37,9 @@ const SearchResultsPage = () => {
   const status = useSelector(selectSearchStatus);
   const error = useSelector(selectSearchError);
   const hasMore = useSelector(selectSearchHasMore);
-  const totalHits = useSelector(selectSearchTotalHits);
-  const page = useSelector(selectSearchPage);
-  const perPage = useSelector(selectSearchHitsPerPage);
+  const _totalHits = useSelector(selectSearchTotalHits);
+  const _page = useSelector(selectSearchPage);
+  const _perPage = useSelector(selectSearchHitsPerPage);
 
   useNProgress(status === "loading");
   // Hydrate Redux from URL on first mount
@@ -66,7 +66,7 @@ const SearchResultsPage = () => {
     }, 300);
 
     return () => clearTimeout(id);
-  }, [query, tag, dispatch, setSearchParams]);
+  }, [query, tag, dispatch, setSearchParams, status]);
 
   return (
     <div>

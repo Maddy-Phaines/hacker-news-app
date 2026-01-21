@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Sun, Moon } from "lucide-react";
-import AppTooltip from "./ui/AppTooltip";
+import AppTooltip from "./AppTooltip";
 
 function ThemeToggle() {
   const [isDark, setIsDark] = useState(false);

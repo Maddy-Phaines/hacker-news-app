@@ -1,6 +1,5 @@
 /* PostsSlice handles async fetch with createAsyncThunk*/
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 
 // The thunk takes a `tag` argument
 export const fetchPostsByTag = createAsyncThunk(
@@ -36,7 +35,7 @@ export const fetchPostsByTag = createAsyncThunk(
       tag: tag,
       posts: posts,
     };
-  }
+  },
 );
 
 // Define the list of all tags/tabs in one place
@@ -58,7 +57,7 @@ const postsSlice = createSlice({
   initialState,
   reducers: {
     // reset state
-    resetTag() {
+    resetTag(state, action) {
       const tag = action.payload;
       if (state.byTag[tag]) {
         state.byTag[tag] = { items: [], status: "idle", error: null };

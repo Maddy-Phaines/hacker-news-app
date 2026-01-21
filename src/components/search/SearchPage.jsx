@@ -5,12 +5,12 @@ import {
   setQuery as setSearchQuery,
   selectSearchQuery,
   selectSearchTag,
-} from "../features/search/searchSlice";
-import PageContainer from "./ui/PageContainer";
-import BackButton from "./BackButton";
-import SuggestionsList from "./SuggestionsList";
-import TrendingRail from "./TrendingRail";
-import ThemeToggle from "./ThemeToggle";
+} from "../../features/search/searchSlice";
+import PageContainer from "../ui/PageContainer";
+import BackButton from "../ui/BackButton";
+import SuggestionsList from "../search/SuggestionsList";
+import TrendingRail from "../TrendingRail";
+import ThemeToggle from "../ui/ThemeToggle";
 import { XCircle } from "lucide-react";
 import { SearchIcon } from "lucide-react";
 
@@ -70,7 +70,7 @@ const SearchBarPage = () => {
     setSearchParams({ q: "", cat: tag }, { replace: true });
   };
 
-  const isEmpty = input.trim().length === 0;
+  const _isEmpty = input.trim().length === 0;
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
@@ -86,7 +86,7 @@ const SearchBarPage = () => {
           h-[56px] justify-between"
           >
             {/* ← Left slot */}
-            <div className="flex items-center space-x-3 border hidden lg:flex">
+            <div className="flex items-center space-x-3 hidden lg:flex">
               <a href="/" className="inline-flex items-center">
                 <div className="w-10 h-10 rounded-full bg-[var(--color-bg-pasta)] flex items-center justify-center">
                   <span className="font-bold text-[var(--color-contrast)]">

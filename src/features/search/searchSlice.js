@@ -9,7 +9,7 @@ export const fetchSearch = createAsyncThunk(
     const endpoint = sortBy === "date" ? "search_by_date" : "search";
     const url = new URL(`https://hn.algolia.com/api/v1/${endpoint}?`);
     url.searchParams.set("query", query); // sets parameter and value
-    url.searchParams.set("page", page);
+    url.searchParams.set("page", nextPage);
     url.searchParams.set("hitsPerPage", hitsPerPage);
     if (tag !== "all") {
       url.searchParams.set("tags", tag);

@@ -4,16 +4,15 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp, MessageCircle } from "lucide-react";
-import { extractDomain } from "../utils/extractDomain";
-import { formatDateSafe } from "../utils/formatDate";
-import { countAllComments } from "../utils/countAllComments";
-import AppTooltip from "../components/AppTooltip";
+import { extractDomain } from "../utils/string/extractDomain";
+import { countAllComments } from "../utils/post/countCommentsRecursive";
+import AppTooltip from "../components/ui/AppTooltip";
 import useNProgress from "../hooks/useNProgress";
-import Header from "../components/Header";
+import Header from "../components/navigation/Header";
 import TimeAgo from "../components/TimeAgo";
 
 import ErrorMessage from "../components/ErrorMessage";
-import CommentThread from "../components/CommentThread";
+import CommentThread from "../components/post/CommentThread";
 import TrendingRail from "../components/TrendingRail";
 
 import {
@@ -161,7 +160,7 @@ export default function PostDetailPage() {
                         className="overflow-hidden"
                       >
                         <CommentThread
-                          comments={detail.children}
+                          comments={detail.children || []}
                           depth={0}
                           authorInt={detail.author.slice(0, 3)}
                         />

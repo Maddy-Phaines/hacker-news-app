@@ -1,6 +1,6 @@
 import { MessageCircle, ArrowUp } from "lucide-react";
 import { Link } from "react-router-dom";
-import TimeAgo from "./TimeAgo";
+import TimeAgo from "../TimeAgo";
 
 const PostItem = ({
   objectID,

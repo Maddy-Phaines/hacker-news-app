@@ -1,8 +1,8 @@
 // src/pages/HomePage.jsx
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import Header from "../components/Header";
+import Header from "../components/navigation/Header";
 import PageContainer from "../components/ui/PageContainer";
 import ErrorMessage from "../components/ErrorMessage";
 import PostList from "../components/post/PostList";
@@ -10,7 +10,7 @@ import TrendingRail from "../components/TrendingRail";
 
 import { usePosts } from "../hooks/usePosts";
 import { setTab } from "../features/ui/uiSlice";
-import slugifyTag from "../utils/slugifyTag";
+import slugifyTag from "../utils/string/slugifyTag";
 import useNProgress from "../hooks/useNProgress";
 
 export default function HomePage() {
@@ -30,19 +30,14 @@ export default function HomePage() {
     <div className="">
       <Header />
       <PageContainer>
+        {status === "loading" && <p>Loading posts...</p>}
         {status === "failed" && <ErrorMessage message={error} />}
         {status === "succeeded" && (
           <div
-            className="
-              flex flex-col
+            className="flex flex-col
               lg:flex-row
               gap-8
-
-              /* center & constrain overall 
-              layout */
-              px-0 
-              
-            "
+              px-0"
           >
             {tag !== "best" && (
               <div

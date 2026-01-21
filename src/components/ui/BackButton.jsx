@@ -1,5 +1,5 @@
 import { ArrowLeft } from "lucide-react";
-import AppTooltip from "./ui/AppTooltip";
+import AppTooltip from "./AppTooltip";
 
 function BackButton({ onClick }) {
   return (

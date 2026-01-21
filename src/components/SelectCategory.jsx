@@ -18,16 +18,10 @@ const TAGS = [
   { id: "show_hn", label: "ShowHn" },
   { id: "poll", label: "Polls" },
 ];
-const SelectCategory = ({
-  categories,
-  selected,
-  onSelect,
-  className,
-  removeFirstButtonMargin = false,
-}) => {
+const SelectCategory = ({ removeFirstButtonMargin = false }) => {
   const dispatch = useDispatch();
   const query = useSelector(selectSearchQuery);
-  const status = useSelector(selectSearchStatus);
+  const _status = useSelector(selectSearchStatus);
   const activeTag = useSelector(selectSearchTag);
   const [_, setParams] = useSearchParams();
   const navigate = useNavigate();

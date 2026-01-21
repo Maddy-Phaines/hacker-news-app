@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 import clsx from "clsx";
-import SearchButton from "./SearchButton";
-import ThemeToggle from "./ThemeToggle";
-import HorizontalScroller from "./HorizontalScroller";
-import AppTooltip from "./ui/AppTooltip";
+import SearchButton from "../ui/SearchButton";
+import ThemeToggle from "../ui/ThemeToggle";
+import HorizontalScroller from "../HorizontalScroller";
+import AppTooltip from "../ui/AppTooltip";
 
 const menuItems = [
   { to: "/", label: "Top" },

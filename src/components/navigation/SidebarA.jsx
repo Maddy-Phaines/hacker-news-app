@@ -1,13 +1,11 @@
 // Shows trending stories
 import { useDispatch } from "react-redux";
 import { LucideTrendingUp } from "lucide-react";
-import {
-  fetchTrendingPosts, // thunk to trigger API request
-} from "../features/trendingPosts/trendingPostsSlice";
-import { useTrendingPosts } from "../hooks/useTrendingPosts";
-import TrendingList from "./TrendingList";
-import useNProgress from "../hooks/useNProgress";
-import ErrorMessage from "./ErrorMessage";
+import { fetchTrendingPosts } from "../../features/trendingPosts/trendingPostsSlice";
+import { useTrendingPosts } from "../../hooks/useTrendingPosts";
+import TrendingList from "../TrendingList";
+import useNProgress from "../../hooks/useNProgress";
+import ErrorMessage from "../ErrorMessage";
 import { useEffect } from "react";
 
 const Sidebar = () => {
@@ -17,9 +15,7 @@ const Sidebar = () => {
   useEffect(() => {
     dispatch(fetchTrendingPosts());
   }, [dispatch]);
-  /* re: dark/default mode, Card, Sidebar, Header, Footer → specific backgrounds
 
-Button, Link, Alert → specific text/background/border */
   return (
     <aside
       className="p-3  border-t border-[var(--border-top-width)] 

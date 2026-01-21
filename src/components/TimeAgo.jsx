@@ -1,4 +1,4 @@
-import { formatDateSafe } from "../utils/formatDate";
+import { formatDateSafe } from "../utils/date/formatDate";
 
 const TimeAgo = ({ date }) => (
   <>

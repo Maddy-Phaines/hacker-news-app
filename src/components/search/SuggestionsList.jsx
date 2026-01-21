@@ -1,12 +1,12 @@
 // components/SuggestionsList.jsx
-import { useDebounce } from "../hooks/useDebounce";
+import { useDebounce } from "../../hooks/useDebounce";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setQuery as setSearchQuery,
   selectSearchTag,
-} from "../features/search/searchSlice";
+} from "../../features/search/searchSlice";
 import { Search } from "lucide-react";
 
 export default function SuggestionsList({ query = "" }) {

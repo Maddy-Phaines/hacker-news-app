@@ -1,8 +1,8 @@
 // preview of trending stories
 import { formatDateSafe } from "../utils/date/formatDate";
-import { extractDomain } from "../utils/extractDomain";
+import { extractDomain } from "../utils/string/extractDomain";
 
-const TrendingItem = ({ title, author, url, created_at, objectId }) => {
+const TrendingItem = ({ title, author, url, created_at }) => {
   return (
     <div className="block py-[0.5rem] z-[999]">
       <div

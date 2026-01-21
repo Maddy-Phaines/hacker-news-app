@@ -3,7 +3,7 @@ import HomePage from "./pages/HomePage";
 import SearchResultsPage from "./pages/SearchResultsPage";
 import PostDetailPage from "./pages/PostDetailPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import SearchBarPage from "./components/SearchBarPage";
+import SearchBarPage from "./components/search/SearchPage";
 
 function App() {
   return (
