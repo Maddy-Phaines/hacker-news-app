@@ -5,6 +5,7 @@ import { store } from "./app/store";
 import "./index.css";
 import App from "./App.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import * as Tooltip from "@radix-ui/react-tooltip";
 
 // 1) Create a client
 const queryClient = new QueryClient({
@@ -19,9 +20,10 @@ const queryClient = new QueryClient({
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
-      {/* 2) Wrap your entire app */}
       <QueryClientProvider client={queryClient}>
-        <App />
+        <Tooltip.Provider delayDuration={300}>
+          <App />
+        </Tooltip.Provider>
       </QueryClientProvider>
     </Provider>
   </StrictMode>

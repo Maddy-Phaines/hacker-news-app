@@ -1,5 +1,5 @@
 // src/pages/PostDetailPage.jsx
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
@@ -7,6 +7,7 @@ import { ArrowUp, MessageCircle } from "lucide-react";
 import { extractDomain } from "../utils/extractDomain";
 import { formatDateSafe } from "../utils/formatDate";
 import { countAllComments } from "../utils/countAllComments";
+import AppTooltip from "../components/AppTooltip";
 import useNProgress from "../hooks/useNProgress";
 import Header from "../components/Header";
 import TimeAgo from "../components/TimeAgo";
@@ -39,6 +40,11 @@ export default function PostDetailPage() {
       .then((data) => console.log("Fetched post detail:", data))
       .catch((err) => console.error("Thunk failed:", err));
   }, [dispatch, id]);
+
+  const totalComments = useMemo(() => {
+    if (!detail?.children) return 0;
+    return countAllComments(detail.children);
+  }, [detail?.children]);
 
   return (
     <div className="min-h-screen w-full">
@@ -79,7 +85,9 @@ export default function PostDetailPage() {
                     </div>
 
                     {/* Title & Domain */}
-                    <h1 className="text-2xl font-bold mb-2">{detail.title}</h1>
+                    <h1 className="text-[20px] md:text-[24px] font-bold mb-2">
+                      {detail.title}
+                    </h1>
                     <p className="text-[var(--color-text-neutral)] mb-4">
                       {extractDomain(detail.url)}
                     </p>
@@ -108,7 +116,14 @@ export default function PostDetailPage() {
                       </div>
 
                       {/* Comments */}
-                      <div className="">
+                      <AppTooltip
+                        content={`${
+                          commentsVisible ? "Hide" : "Show"
+                        } ${totalComments} comment${
+                          totalComments !== 1 ? "s" : ""
+                        }`}
+                        side="top"
+                      >
                         <button
                           className="flex items-center gap-1
                           md:border
@@ -130,7 +145,7 @@ export default function PostDetailPage() {
                             {countAllComments(detail.children) !== 1 && "s"}
                           </span>
                         </button>
-                      </div>
+                      </AppTooltip>
                     </div>
                   </div>
 

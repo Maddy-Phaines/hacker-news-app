@@ -44,7 +44,6 @@ export default function HomePage() {
               
             "
           >
-            {/** LEFT COLUMN: only for non‑Best tabs */}
             {tag !== "best" && (
               <div
                 className="min-w-0 
@@ -61,10 +60,8 @@ export default function HomePage() {
               className={`
                 ${
                   tag === "best"
-                    ? /* Best: use the flex-1 main column instead of sidebar */
-                      "flex-1 min-w-0 px-4 mx-1 sm:mx-2"
-                    : /* Other tabs: fixed sidebar on desktop */
-                      "flex-none w-full lg:w-[320px] pt-[2rem]"
+                    ? "flex-1 min-w-0 px-4 mx-1 sm:mx-2"
+                    : "flex-none w-full lg:w-[320px] pt-[2rem]"
                 }
               `}
             >

@@ -78,41 +78,41 @@ const SearchResultsPage = () => {
       )}
       <div
         className="max-w-6xl 
-    mx-auto px-4 
+    mx-auto
     py-6"
       >
         <div
-          className="my-0 mx-[24px] min-width-0 mx-auto
-      hover:rounded-[1rem] hover:bg-[var(--color-bg-hover)] py-[0.25rem]"
+          className="my-0 mx-[24px] min-width-0
+      hover:rounded-[1rem] hover:bg-[var(--color-bg-hover)] 
+      w-[90%]"
         >
-          <div
-            className="md:inline mb-5 max-h-[24px] 
-          leading-[1.25] clamp-1 tracking-[0.016em]"
-          >
-            <span className="text-[var(--color-bg-pasta)]">
+          <div className="mb-[24px] md:mb-[48px]">
+            <h1
+              className="tracking-[-0.016em] m-0
+            md:tracking-[-0.011em] font-medium text-[24px] 
+            md:text-[42px]"
+            >
               Results for&nbsp;
-            </span>
-            <span className="italic lowercase">{query}</span>
-            <p className="text-grey-500 mt-2">
-              Page {page}: 1&nbsp;-&nbsp;{perPage} of {totalHits} results
-            </p>
+              <span className="italic lowercase">{query}</span>
+            </h1>
           </div>
-        </div>
-        {/* ───── Search summary + category nav ───── */}
-        <header className="mb-1">
-          <div className="w-full">
-            <div className="px-[0.2rem] lg:px-0 pt-[1rem]">
-              <nav>
-                <SelectCategory />
-              </nav>
+
+          {/* ───── Search summary + category nav ───── */}
+          <header className="mb-1">
+            <div className="w-full">
+              <div className=" lg:px-0 pt-[1rem]">
+                <nav>
+                  <SelectCategory removeFirstButtonMargin />
+                </nav>
+              </div>
             </div>
-          </div>
-        </header>
+          </header>
+        </div>
 
         {/* ───── Results Info ───── */}
         <div className="">
           {/* ───── 2-column Layout ───── */}
-          <div className="grid grid-cols-[minmax(0,1fr)] md:grid-cols-[minmax(0,756px)_minmax(0,316px)] gap-8 mx-auto">
+          <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,756px)_minmax(0,316px)] gap-8 mx-auto">
             {/* Main Content */}
             <main className="flex-1 space-y-6">
               <PostList posts={hits} />
