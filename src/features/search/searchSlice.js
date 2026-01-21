@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-// async thunk here
 export const fetchSearch = createAsyncThunk(
   "search/searchPosts",
   async ({ append = false }, { getState, rejectWithValue }) => {
@@ -41,7 +40,7 @@ export const fetchSearch = createAsyncThunk(
         message: err.message || "Network error occurred",
       });
     }
-  }
+  },
 );
 
 const initialState = {

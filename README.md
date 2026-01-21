@@ -39,7 +39,7 @@ This project focuses on **real-world data handling**, **component architecture**
 
 ## 🧠 Engineering Focus
 
-`````md
+```md
 The app is structured to be easily extended with additional data sources or persistence in the future.
 
 The project was built iteratively, with an emphasis on:
@@ -50,12 +50,13 @@ The project was built iteratively, with an emphasis on:
 - Refactoring toward better structure as features evolved
 
 Rather than a single “feature drop”, the codebase reflects ongoing improvement and real-world trade-offs.
+```
 
 ---
 
 ## 📁 Project Structure
 
-````text
+```text
 src/
 ├── components/     # Reusable UI components
 ├── features/       # Redux slices (posts, search, comments, trending)
@@ -65,10 +66,9 @@ src/
 ├── styles/         # Global styles & Tailwind config
 ├── App.jsx
 └── main.jsx
-
+```
 
 ---
-
 
 ## 🧪 Lighthouse Scores
 
@@ -99,13 +99,8 @@ It’s part of my job-seeking portfolio as a front-end developer.
 ## ▶️ Run Locally
 
 ```bash
-git clone https://github.com/your-username/hacker-news-reader.git
+git clone https://github.com/Maddy-Phaines/hacker-news-reader.git
 cd hacker-news-reader
 npm install
 npm run dev
-````
-`````
-
-```
-
 ```

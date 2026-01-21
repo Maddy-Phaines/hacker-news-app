@@ -1,11 +1,10 @@
-// src/components/CommentCard.jsx
 import React, { useState } from "react";
 import CommentThread from "./CommentThread";
 import AddButton from "./AddButton";
 import MinusButton from "./MinusButton";
 import Avvvatars from "avvvatars-react";
 import { formatDateSafe } from "../utils/date/formatDate";
-import { stripHtml } from "../utils/stripHtml";
+import { stripHtml } from "../utils/string/stripHtml";
 
 const WORD_LIMIT = 60; // only truncate if > 60 words
 
