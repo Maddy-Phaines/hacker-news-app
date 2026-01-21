@@ -1,7 +1,7 @@
-/* Recursive component to display nested comments */
-/* Key for post detail view */
-import CommentCard from "../CommentCard";
-const CommentThread = ({ comments, depth = 0, authorInt }) => {
+import CommentCard from "./CommentCard";
+
+export default function CommentThread({ comments, depth = 0, authorInt }) {
+  if (!comments || comments.length === 0) return null;
   return (
     <>
       {comments.map((comment) => (
@@ -14,6 +14,4 @@ const CommentThread = ({ comments, depth = 0, authorInt }) => {
       ))}
     </>
   );
-};
-
-export default CommentThread;
+}
