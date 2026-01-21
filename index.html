@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -46,7 +46,7 @@
   <body
     class="text-[var(--copy)] bg-[var(--color-bg)] antialiased transition-colors"
   >
-    <div id="root"></div>
+    <div id="root">Loading Hacker News Reader...</div>
     <!-- script to remember user choice RE dark mode/light mode -->
     <!-- Save/restore preference -->
     <script>
@@ -54,7 +54,7 @@
       const apply = () =>
         document.documentElement.classList.toggle(
           "dark",
-          localStorage.theme === "dark"
+          localStorage.theme === "dark",
         );
       apply();
 
