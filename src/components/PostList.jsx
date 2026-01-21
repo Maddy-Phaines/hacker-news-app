@@ -5,14 +5,14 @@ import PostItem from "./PostItem";
 const PostList = ({ posts }) => {
   return (
     <div>
-      <div className="pt-1 md:pt-4"></div>
+      <div className="md:pt-4"></div>
       <div>
-        {posts.map((post) => (
+        {posts.map((post, index) => (
           <div
             key={post.objectID}
-            className="mb-1 border-b 
-            border-[var(--color-border)] 
-            py-1"
+            className="flex flex-col gap-2
+            shadow-[var(--shadow-below)] 
+            "
           >
             <PostItem
               key={post.objectID}
@@ -23,6 +23,7 @@ const PostList = ({ posts }) => {
               points={post.points}
               num_comments={post.num_comments}
               created_at={post.created_at}
+              index={index}
             />
           </div>
         ))}

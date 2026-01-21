@@ -25,17 +25,16 @@ const TrendingItem = ({ title, author, url, created_at, objectId }) => {
             >
               <span
                 className="font-sohne
-    font-bold
-    text-base 
-    leading-5
-    overflow-hidden
-    m-0
-    md:text-[14px]
-    mdplus:leading-[30px]
-    mdplus:max-h-[90px]
-    mdplus:tracking-[-0.016em]
-    md:line-clamp-2
-    "
+                font-bold
+                text-base 
+                leading-5
+                overflow-hidden
+                m-0
+                md:text-[14px]
+                mdplus:leading-[30px]
+                mdplus:max-h-[90px]
+                mdplus:tracking-[-0.016em]
+                md:line-clamp-2"
               >
                 {title}
               </span>

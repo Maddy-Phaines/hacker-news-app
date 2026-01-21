@@ -3,6 +3,7 @@ import clsx from "clsx";
 import SearchButton from "./SearchButton";
 import ThemeToggle from "./ThemeToggle";
 import HorizontalScroller from "./HorizontalScroller";
+import AppTooltip from "./AppTooltip";
 
 const menuItems = [
   { to: "/", label: "Top" },
@@ -28,7 +29,7 @@ export default function Header() {
   );
 
   const navLinkBase =
-    "rounded-[16px] px-[0.825rem] py-[0.4rem] text-[var(--color-bg-tertiary)] font-[400]";
+    "rounded-[16px] text-[14px] px-[0.825rem] py-[0.4rem] text-[var(--color-bg-tertiary)] font-medium";
   const linkClass = ({ isActive }) =>
     clsx(navLinkBase, {
       "hover:text-[var(--color-btn-bg)] hover:bg-[var(--color-btn-text)]":
@@ -42,21 +43,23 @@ export default function Header() {
     <>
       {/* Row 1: Logo, Search, Theme Toggle */}
       <header className={clsx(row1Classes)} aria-label="Main navigation">
-        <div className={clsx(groupGap, "oultine mx-[14px]")}>
-          <a href="/" className="font-bold leading-tight">
-            <div
-              className="flex items-center justify-center 
+        <div className={clsx(groupGap, "mx-[14px]")}>
+          <AppTooltip content="Go to homepage" side="bottom">
+            <a href="/" className="font-bold leading-tight">
+              <div
+                className="flex items-center justify-center 
             rounded-full w-10 h-10 bg-[var(--color-bg-pasta)]"
-            >
-              <span className="text-[var(--color-contrast)]">HN</span>
-            </div>
-          </a>
+              >
+                <span className="text-[var(--color-contrast)]">HN</span>
+              </div>
+            </a>
+          </AppTooltip>
         </div>
         <div className="flex">
           <div className="flex">
-            <SearchButton />
+            <ThemeToggle />
           </div>
-          <ThemeToggle />
+          <SearchButton />
         </div>
       </header>
 

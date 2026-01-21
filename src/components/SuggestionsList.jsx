@@ -87,7 +87,7 @@ export default function SuggestionsList({ query = "" }) {
                 />
               </svg>
             </button>
-            <span className="text-12">{term}</span>
+            <span className="text-12 line-clamp-1 md:line-clamp-2">{term}</span>
           </div>
         </li>
       ))}

@@ -160,7 +160,7 @@ const SearchBarPage = () => {
 
                 {open && (
                   <div
-                    className="absolute outline
+                    className="absolute
                     scrollable
                     inset-x-0
                     top-full

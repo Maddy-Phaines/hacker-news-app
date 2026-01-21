@@ -74,12 +74,14 @@ body {
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.75rem;
   --spacing-page-y: var(--header-height);
-  --spacing-page-x: 1rem;
+  --spacing-page-x: 1.5rem;
   --gap-c-xs: 0.5rem;
   --button-gap: 0.5rem;
   --anim-duration: 300ms;
 
   --icon-height: 3rem;
+  --shadow-below: inset 0 -1px 0 rgb(242, 242, 242);
+  --shadow-below-b: rgb(36, 36, 36);
 }
 /* Dark theme overrides  */
 :where(.dark, .dark *) {
@@ -110,6 +112,9 @@ body {
   --color-bg-cotton: #e5edff;
   --color-bg-pasta: #ffcb56;
   --color-contrast: #272343;
+
+  --shadow-below: inset 0 -1px 0 rgb(36, 36, 36);
+  --shadow-below-b: #fff;
 }
 
 .text-12 {

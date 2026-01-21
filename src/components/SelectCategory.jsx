@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
+import clsx from "clsx";
 import {
   setTag,
   selectSearchTag,
@@ -17,7 +18,13 @@ const TAGS = [
   { id: "show_hn", label: "ShowHn" },
   { id: "poll", label: "Polls" },
 ];
-const SelectCategory = ({ categories, selected, onSelect, className }) => {
+const SelectCategory = ({
+  categories,
+  selected,
+  onSelect,
+  className,
+  removeFirstButtonMargin = false,
+}) => {
   const dispatch = useDispatch();
   const query = useSelector(selectSearchQuery);
   const status = useSelector(selectSearchStatus);
@@ -42,15 +49,26 @@ const SelectCategory = ({ categories, selected, onSelect, className }) => {
       {/* Mobile: Scrolling layout */}
       <div className="block md:hidden">
         <HorizontalScroller>
-          <ButtonGroup className="outline">
-            {TAGS.map((tag) => (
-              <Button
+          <ButtonGroup className="">
+            {TAGS.map((tag, index) => (
+              <div
                 key={tag.id}
-                onClick={() => handleClick(tag.id)}
-                variant={tag.id === activeTag ? "default" : "ghost"}
+                className={clsx(
+                  "inline-flex items-center min-w-max pb-[16px]",
+                  removeFirstButtonMargin && index === 0
+                    ? "ml-0 mr-[16px]"
+                    : "mx-[16px]",
+                  tag.id === activeTag &&
+                    "border-b border-b-[var(--shadow-below-b)]"
+                )}
               >
-                {tag.label}
-              </Button>
+                <Button
+                  onClick={() => handleClick(tag.id)}
+                  variant={tag.id === activeTag ? "default" : "ghost"}
+                >
+                  {tag.label}
+                </Button>
+              </div>
             ))}
           </ButtonGroup>
         </HorizontalScroller>
@@ -60,13 +78,24 @@ const SelectCategory = ({ categories, selected, onSelect, className }) => {
       <div className="hidden md:flex space-x-8">
         <ButtonGroup className="">
           {TAGS.map((tag) => (
-            <Button
+            <div
               key={tag.id}
-              onClick={() => handleClick(tag.id)}
-              variant={tag.id === activeTag ? "default" : "ghost"}
+              className={clsx(
+                "inline-flex items-center min-w-max pb-[16px] mx-[16px]",
+                {
+                  "border-b border-b-[rgb(36, 36, 36)] border-[var(--color-accent)]":
+                    tag.id === activeTag,
+                }
+              )}
             >
-              {tag.label}
-            </Button>
+              <Button
+                key={tag.id}
+                onClick={() => handleClick(tag.id)}
+                variant={tag.id === activeTag ? "default" : "ghost"}
+              >
+                {tag.label}
+              </Button>
+            </div>
           ))}
         </ButtonGroup>
       </div>

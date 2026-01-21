@@ -7,7 +7,10 @@ import { wrap } from "framer-motion";
  */
 const ButtonGroup = ({ children }) => {
   return (
-    <div role="group" className="whitespace-nowrap">
+    <div
+      role="group"
+      className="whitespace-nowrap shadow-[var(--shadow-below)]"
+    >
       {children}
     </div>
   );
