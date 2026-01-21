@@ -1,6 +1,6 @@
 /* Recursive component to display nested comments */
 /* Key for post detail view */
-import CommentCard from "./CommentCard";
+import CommentCard from "../CommentCard";
 const CommentThread = ({ comments, depth = 0, authorInt }) => {
   return (
     <>

@@ -4,7 +4,7 @@ import CommentThread from "./CommentThread";
 import AddButton from "./AddButton";
 import MinusButton from "./MinusButton";
 import Avvvatars from "avvvatars-react";
-import { formatDateSafe } from "../utils/formatDate";
+import { formatDateSafe } from "../utils/date/formatDate";
 import { stripHtml } from "../utils/stripHtml";
 
 const WORD_LIMIT = 60; // only truncate if > 60 words

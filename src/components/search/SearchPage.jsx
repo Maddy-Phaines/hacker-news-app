@@ -6,7 +6,7 @@ import {
   selectSearchQuery,
   selectSearchTag,
 } from "../features/search/searchSlice";
-import PageContainer from "./PageContainer";
+import PageContainer from "./ui/PageContainer";
 import BackButton from "./BackButton";
 import SuggestionsList from "./SuggestionsList";
 import TrendingRail from "./TrendingRail";

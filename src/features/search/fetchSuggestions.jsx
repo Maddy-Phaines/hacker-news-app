@@ -1,4 +1,3 @@
-// utils/fetchSuggestions.js
 export async function fetchSuggestions(query) {
   const url = new URL("https://hn.algolia.com/api/v1/search_by_date");
   url.searchParams.set("query", query);

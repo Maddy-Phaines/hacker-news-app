@@ -18,7 +18,7 @@ import {
   fetchSearch,
 } from "../features/search/searchSlice";
 
-import PostList from "../components/PostList";
+import PostList from "../components/post/PostList";
 import ErrorMessage from "../components/ErrorMessage";
 import Sidebar from "../components/SidebarA";
 import SelectCategory from "../components/SelectCategory";

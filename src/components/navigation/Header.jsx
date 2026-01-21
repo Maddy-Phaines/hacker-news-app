@@ -3,7 +3,7 @@ import clsx from "clsx";
 import SearchButton from "./SearchButton";
 import ThemeToggle from "./ThemeToggle";
 import HorizontalScroller from "./HorizontalScroller";
-import AppTooltip from "./AppTooltip";
+import AppTooltip from "./ui/AppTooltip";
 
 const menuItems = [
   { to: "/", label: "Top" },
@@ -20,12 +20,12 @@ export default function Header() {
   const row1Classes = clsx(
     "h-[var(--header-height)] border-b border-[var(--color-border)]",
     "text-[--copy] z-20 flex items-center justify-between",
-    "px-[var(--spacing-page-x)] bg-[var(--color-bg)]"
+    "px-[var(--spacing-page-x)] bg-[var(--color-bg)]",
   );
 
   const row2Classes = clsx(
     "w-full sticky top-0 left-0 right-0 z-[999]",
-    "bg-[var(--color-bg)] border-b border-[var(--color-border)]"
+    "bg-[var(--color-bg)] border-b border-[var(--color-border)]",
   );
 
   const navLinkBase =

@@ -3,9 +3,9 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Header from "../components/Header";
-import PageContainer from "../components/PageContainer";
+import PageContainer from "../components/ui/PageContainer";
 import ErrorMessage from "../components/ErrorMessage";
-import PostList from "../components/PostList";
+import PostList from "../components/post/PostList";
 import TrendingRail from "../components/TrendingRail";
 
 import { usePosts } from "../hooks/usePosts";

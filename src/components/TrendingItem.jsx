@@ -1,5 +1,5 @@
 // preview of trending stories
-import { formatDateSafe } from "../utils/formatDate";
+import { formatDateSafe } from "../utils/date/formatDate";
 import { extractDomain } from "../utils/extractDomain";
 
 const TrendingItem = ({ title, author, url, created_at, objectId }) => {

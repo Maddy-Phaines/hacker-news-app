@@ -7,8 +7,8 @@ import {
   selectSearchQuery,
   selectSearchStatus,
 } from "../features/search/searchSlice";
-import Button from "./Button";
-import ButtonGroup from "./ButtonGroup";
+import Button from "./ui/Button";
+import ButtonGroup from "./ui/ButtonGroup";
 import HorizontalScroller from "./HorizontalScroller";
 
 const TAGS = [
@@ -59,7 +59,7 @@ const SelectCategory = ({
                     ? "ml-0 mr-[16px]"
                     : "mx-[16px]",
                   tag.id === activeTag &&
-                    "border-b border-b-[var(--shadow-below-b)]"
+                    "border-b border-b-[var(--shadow-below-b)]",
                 )}
               >
                 <Button
@@ -85,7 +85,7 @@ const SelectCategory = ({
                 {
                   "border-b border-b-[rgb(36, 36, 36)] border-[var(--color-accent)]":
                     tag.id === activeTag,
-                }
+                },
               )}
             >
               <Button
